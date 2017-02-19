@@ -1,9 +1,14 @@
-mov 1000000, hx		# Discription of this programm in speedtest.asm
-
 main:
+	jqn	init
+	jln init
+
 	add 1, ax
 	rts ax
 	outl
-	sub 1, hx
+	pop
 	jgn main
 	hlt
+
+init:
+	mov 1000000, hx		# Discription of this programm in speedtest.asm
+	return

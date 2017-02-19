@@ -65,9 +65,9 @@ public:
 
                 if (!isstr)
                 {
-                    if (code[i] == ' ' || code[i] == ',' || code[i] == ';')
+                    if (code[i] == ' ' || code[i] == ',' || code[i] == ';' || code[i] == '\t')
                     {
-                        while(code[i+1] == ' ' || code[i+1] == ',')
+                        while(code[i+1] == ' ' || code[i+1] == ',' || code[i+1] == '\t')
                         {
                             i++;
                             // std::cout << "[IGN] \"" << code[i] << "\"" << std::endl;

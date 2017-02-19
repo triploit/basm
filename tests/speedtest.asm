@@ -1,9 +1,11 @@
-mov 1000000, hx		# move 1000000 to HX
+main:					# BASM needs a main function
+	mov 1000000, hx		# load 1000000 to HX
+	.main:				# set goto-label main ( !! this is not a function !! )
 
-main:			# basm needs a main function
-	add 1, ax	# add 1 to register AX
-	rts ax		# put register AX to stack
-	outl		# write last number of the stack and write a new line character
-	sub 1, hx	# decrement HX (hx = hx - 1)
-	jgn main	# jump to main if HX is greater than 0 (Jump if Greater Null)
-	hlt		# terminate the program when HX is equal to zero, or less than zero, because the loop stops
+		sub 1, hx;		# decrement HX
+		rts hx			# push value of HX to stack
+		outl			# write last element of stack to screen and write a new line
+		pop				# delete last element from stack
+
+	ggn main			#.if HX is greater than zero, jump to goto label "main"
+	hlt					# stop programm

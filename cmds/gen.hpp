@@ -1,5 +1,5 @@
-#ifndef JQN_HPP
-#define JQN_HPP
+#ifndef GEN_HPP
+#define GEN_HPP
 
 #include "../rte/objs/command.hpp"
 #include "../rte/runtime.hpp"
@@ -7,10 +7,10 @@
 #include "../rte/compiler.hpp"
 #include "../rte/registers.hpp"
 
-class Jqn : public Command
+class Gen : public Command
 {
 private:
-    std::regex name = std::regex("((J|j)(E|e)(N|n))");
+    std::regex name = std::regex("((G|g)(E|e)(N|n))");
     std::regex r_regs = std::regex("(ax|bx|cx|dx|ex|fx|gx|hx)");
 
     std::regex r_int = std::regex("[0-9]*");
@@ -20,11 +20,11 @@ public:
     {
         if (!Runtime.Compile)
         {
-            if (Registers.getRegister("hx").getValue() == 0)
+            if (Registers.getRegister("hx").getValue() > 0)
                 Labels.gotoLabel(args[0], Labels.getI());
         }
 
-        Compiler.addLine("\n\tif (hx == 0)\n\t\tfx = "+args[0]+"();\n");
+        Compiler.addLine("\n\tif (hx == 0)\n\t\tgoto "+args[0]+";\n");
     }
 
     std::regex getName()

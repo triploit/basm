@@ -26,6 +26,11 @@
 #include "../cmds/mod.hpp"
 #include "../cmds/hlt.hpp"
 #include "../cmds/return.hpp"
+#include "../cmds/gt.hpp"
+#include "../cmds/gln.hpp"
+#include "../cmds/gnn.hpp"
+#include "../cmds/ggn.hpp"
+#include "../cmds/gen.hpp"
 
 class Commands
 {
@@ -56,6 +61,11 @@ public:
         bin_commands.push_back(new Mul());
         bin_commands.push_back(new Hlt());
         bin_commands.push_back(new Return());
+        bin_commands.push_back(new Gt());
+        bin_commands.push_back(new Gnn());
+        bin_commands.push_back(new Gln());
+        bin_commands.push_back(new Gen());
+        bin_commands.push_back(new Ggn());
     }
 
     void runCommand(std::string command, std::vector<std::string> args)

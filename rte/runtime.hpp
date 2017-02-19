@@ -15,6 +15,17 @@ private:
 public:
     int LineNumber = 1;
     bool Compile = false;
+    std::string CommandType = "";
+
+    void setCommandType(std::string s)
+    {
+        CommandType = s;
+    }
+
+    std::string getCommandType()
+    {
+        return CommandType;
+    }
 
     bool isJump()
     {

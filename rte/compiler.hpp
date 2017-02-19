@@ -25,6 +25,11 @@ public:
         code = code + _code;
     }
 
+    std::string getCode()
+    {
+        return code;
+    }
+
     void compile(std::string file, std::string binary)
     {
         std::ofstream afile((file+".cpp"), std::ios::out);
