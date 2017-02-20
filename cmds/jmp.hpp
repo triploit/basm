@@ -17,8 +17,11 @@ private:
 public:
     void runFunction(std::vector<std::string> args)
     {
-        if (!Runtime.Compile)
-            Labels.gotoLabel(args[0], Labels.getI());
+        if (!Labels.existsLabel(args[0]))
+        {
+            std::cout << "LINE " << Runtime.LineNumber << ": ERROR: (FUNCTION_)LABEL_NOT_FOUND: Label " << args[0] << " existiert nicht!" << std::endl;
+            exit(0);
+        }
 
         Compiler.addLine("fx = "+args[0]+"();");
     }

@@ -6,6 +6,8 @@
 
 #include "objs/label.hpp"
 #include "runtime.hpp"
+#include "../tstring.hpp"
+#include "objs/goto.hpp"
 
 class Labels
 {
@@ -15,10 +17,29 @@ private:
     std::stack<int> last_i;
     std::stack<std::string> last_label_name;
     std::string akt_label = "";
+    std::vector<Goto> b_gotos;
 
 public:
     int Index = 0;
     bool iChanged = false;
+
+    void addGoto(Goto g)
+    {
+        b_gotos.push_back(g);
+    }
+
+    Goto getGoto(std::string name)
+    {
+        for (int i = 0; i < b_gotos.size(); i++)
+        {
+            if (b_gotos[i].getName() == name && akt_label == b_gotos[i].getScope())
+            {
+                return b_gotos[i];
+            }
+        }
+
+        return Goto("", -1, "");
+    }
 
     void setAktLabel(std::string name)
     {
@@ -84,6 +105,20 @@ public:
             if (b_labels[i].getName() == name || b_labels[i].getName() == (name+":"))
             {
                 return true;
+            }
+        }
+
+        return false;
+    }
+
+    bool existsGoto(std::string name)
+    {
+        for (int i = 0; i < b_gotos.size(); i++)
+        {
+            if (b_gotos[i].getName() == name || b_gotos[i].getName() == (name+":"))
+            {
+                if (b_gotos[i].getScope() == getAktLabel())
+                    return true;
             }
         }
 

@@ -1,17 +1,29 @@
-#ifndef LABEL_HPP
-#define LABEL_HPP
+#ifndef GOTO_HPP
+#define GOTO_HPP
 
 #include <iostream>
 
-class Label
+class Goto
 {
 private:
     int index;
     std::string name;
+    std::string scope;
+
 public:
     int getIndex()
     {
         return index;
+    }
+
+    std::string getScope()
+    {
+        return scope;
+    }
+
+    void setScope(std::string s)
+    {
+        scope = s;
     }
 
     std::string getName()
@@ -24,10 +36,11 @@ public:
         name = s;
     }
 
-    Label(std::string _name, int _index)
+    Goto(std::string _name, int _index, std::string _scope)
     {
         name = _name;
         index = _index;
+        scope = _scope;
     }
 };
 

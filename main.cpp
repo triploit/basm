@@ -185,6 +185,7 @@ int main(int argc, char const *argv[])
 
                     // Compiler.addLineT(l.cxs());
                     _m = l.replace(":", "").cxs();
+                    Labels.setAktLabel(_m);
                     std::cout << "[L]:[" << (i) << "] " << l.replace(":", "").cxs() << std::endl;
 
                     Compiler.addLineT("int " + l.replace(":", "").cxs() + "()");
@@ -196,6 +197,7 @@ int main(int argc, char const *argv[])
                     std::cout << "[LG]:[" << (i) << "] " << l.replace(":", "").replace(".", "").cxs() << std::endl;
 
                     Compiler.addLineT(l.replace(".", "").cxs());
+                    Labels.addGoto(Goto(l.replace(".", "").replace(":", "").cxs(), i, Labels.getAktLabel()));
                     line = "";
                 }
                 else
@@ -223,8 +225,6 @@ int main(int argc, char const *argv[])
     {
         std::cout << "BASM 0.1.2 Alpha\n\nUSAGE:" << std::endl;
         std::cout << "\tbasm -c [InputFile] [OutputFile]" << std::endl;
-        // std::cout << "\tbasm [InputFile] [OutputFile]" << std::endl;
-        // std::cout << "\tbasm [InputFile]" << std::endl;
     }
 
     return 0;

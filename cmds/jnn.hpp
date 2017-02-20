@@ -18,12 +18,12 @@ private:
 public:
     void runFunction(std::vector<std::string> args)
     {
-        if (!Runtime.Compile)
+        if (!Labels.existsLabel(args[0]))
         {
-            if (Registers.getRegister("hx").getValue() != 0)
-                Labels.gotoLabel(args[0], Labels.getI());
+            std::cout << "LINE " << Runtime.LineNumber << ": ERROR: (FUNCTION_)LABEL_NOT_FOUND: Label " << args[0] << " existiert nicht!" << std::endl;
+            exit(0);
         }
-
+        
         Compiler.addLine("\n\tif (hx != 0)\n\t\tfx = "+args[0]+"();\n");
     }
 
