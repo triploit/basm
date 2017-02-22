@@ -79,7 +79,7 @@ int main(int argc, char const *argv[])
     }
     else
     {
-        std::cout << "BASM 0.1.3 Alpha\n\nUSAGE:" << std::endl;
+        std::cout << "BASM 0.1.3a Alpha\n\nUSAGE:" << std::endl;
         std::cout << "\tNon-Static       basm -c <InputFile> <OutputFile>" << std::endl;
         std::cout << "\tStatic Linking:  basm -s -c <InputFile> <OutputFile>" << std::endl;
         std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<

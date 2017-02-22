@@ -35,7 +35,7 @@ int file_read()
                         {
                             std::cout << "ERROR: MEANING_ERROR: \"" << l.cxs() <<
                             "\" \n(Use Commands ONLY in Functions! There must be a main function!)" << std::endl;
-                            return 1;
+                            exit(1);
                         }
                         else
                         {
@@ -49,11 +49,11 @@ int file_read()
                     break;
                 case 1:
                     std::cout << "ERROR: SYNTAX_ERROR: \"" << l.cxs() << "\"" << std::endl;
-                    return 1;
+                    exit(1);
                     break;
                 case 2:
                     std::cout << "ERROR: COMMAND_NOT_FOUND: \"" << l.cxs() << "\"" << std::endl;
-                    return 1;
+                    exit(1);
                     break;
             }
 
