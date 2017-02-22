@@ -18,16 +18,7 @@ private:
 public:
     void runFunction(std::vector<std::string> args)
     {
-        if (!Runtime.Compile)
-        {
-            int i = Labels.returnI();
-            std::cout << "From "<< Labels.getI() <<" return to " << i << std::endl;
-
-            if (!Runtime.Compile)
-                Labels.setI(i);
-        }
-
-        Compiler.addLine("\n\treturn gx;");
+        Compiler.addLine("\n\treturn *gx;");
     }
 
     std::regex getName()

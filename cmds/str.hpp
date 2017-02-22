@@ -20,7 +20,7 @@ public:
         if (!Runtime.Compile)
             Registers.setRegister(args[0], Runtime.peekStack());
 
-        Compiler.addLine(args[0]+" = stack.top();");
+        Compiler.addLine("*"+args[0]+" = stack.top();");
     }
 
     std::regex getName()

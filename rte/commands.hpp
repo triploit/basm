@@ -31,6 +31,9 @@
 #include "../cmds/gnn.hpp"
 #include "../cmds/ggn.hpp"
 #include "../cmds/gen.hpp"
+#include "../cmds/var.hpp"
+#include "../cmds/pushv.hpp"
+#include "../cmds/ptr.hpp"
 
 class Commands
 {
@@ -55,7 +58,6 @@ public:
         bin_commands.push_back(new Jgn());
         bin_commands.push_back(new Jqn());
         bin_commands.push_back(new Mod());
-        bin_commands.push_back(new Mov());
         bin_commands.push_back(new Add());
         bin_commands.push_back(new Sub());
         bin_commands.push_back(new Mul());
@@ -66,6 +68,9 @@ public:
         bin_commands.push_back(new Gln());
         bin_commands.push_back(new Gen());
         bin_commands.push_back(new Ggn());
+        bin_commands.push_back(new Pushv());
+        bin_commands.push_back(new Ptr());
+        bin_commands.push_back(new Var());
     }
 
     void runCommand(std::string command, std::vector<std::string> args)

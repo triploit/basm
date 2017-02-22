@@ -26,21 +26,30 @@ int main(int argc, char const *argv[])
     Parser.clearAll();
     Lexer Lexer;
 
-    if (argc == 4 && strcmp(argv[1], "-c") == 0)
+    if (argc == 4 && (strcmp(argv[1], "-c") == 0 || strcmp(argv[1], "--compile") == 0))
     {
         Runtime.Compile = true;
         Compiler.addLineT("#include <iostream>");
         Compiler.addLineT("#include <stack>");
         Compiler.addLineT("#include <vector>");
         Compiler.addLineT("");
-        Compiler.addLineT("int ax = 0;");
-        Compiler.addLineT("int bx = 0;");
-        Compiler.addLineT("int cx = 0;");
-        Compiler.addLineT("int dx = 0;");
-        Compiler.addLineT("int ex = 0;");
-        Compiler.addLineT("int fx = 0;");
-        Compiler.addLineT("int gx = 0;");
-        Compiler.addLineT("int hx = 0;");
+        Compiler.addLineT("int _r_a = 0;");
+        Compiler.addLineT("int _r_b = 0;");
+        Compiler.addLineT("int _r_c = 0;");
+        Compiler.addLineT("int _r_d = 0;");
+        Compiler.addLineT("int _r_e = 0;");
+        Compiler.addLineT("int _r_f = 0;");
+        Compiler.addLineT("int _r_g = 0;");
+        Compiler.addLineT("int _r_h = 0;");
+        Compiler.addLineT("");
+        Compiler.addLineT("int *ax = &_r_a;");
+        Compiler.addLineT("int *bx = &_r_b;");
+        Compiler.addLineT("int *cx = &_r_c;");
+        Compiler.addLineT("int *dx = &_r_d;");
+        Compiler.addLineT("int *ex = &_r_e;");
+        Compiler.addLineT("int *fx = &_r_f;");
+        Compiler.addLineT("int *gx = &_r_g;");
+        Compiler.addLineT("int *hx = &_r_h;");
         Compiler.addLineT("");
         Compiler.addLineT("std::stack<int> stack;\n");
 
@@ -61,7 +70,7 @@ int main(int argc, char const *argv[])
                 tri::string l = line;
                 l = l.trim();
 
-                std::cout << "LINE " << Runtime.LineNumber << ": ";
+                std::cout << "[LEX] LINE " << Runtime.LineNumber << ": ";
                 switch (Lexer.isNiceCommand(l.cxs()))
                 {
                     case 0:
@@ -224,7 +233,7 @@ int main(int argc, char const *argv[])
     else
     {
         std::cout << "BASM 0.1.2 Alpha\n\nUSAGE:" << std::endl;
-        std::cout << "\tbasm -c [InputFile] [OutputFile]" << std::endl;
+        std::cout << "basm -c [InputFile] [OutputFile]" << std::endl;
     }
 
     return 0;

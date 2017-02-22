@@ -18,17 +18,9 @@ public:
     void runFunction(std::vector<std::string> args)
     {
         if (std::regex_match(args[0], match, r_int))
-        {
-            if (!Runtime.Compile)
-                Registers.setRegister(args[1], std::stoi(args[0]));
-        }
-        else if (std::regex_match(args[0], match, r_regs))
-        {
-            if (!Runtime.Compile)
-                Registers.setRegister(args[1], Registers.getRegister(args[0]).getValue());
-        }
-
-        Compiler.addLine(args[1]+" = "+args[0]+";");
+            Compiler.addLine("*"+args[1]+" = "+args[0]+";");
+        else
+            Compiler.addLine("*"+args[1]+" = *"+args[0]+";");
     }
 
     std::regex getName()

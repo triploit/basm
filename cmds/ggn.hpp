@@ -24,7 +24,7 @@ public:
             exit(0);
         }
 
-        Compiler.addLine("\n\tif (hx > 0)\n\t\tgoto "+args[0]+";\n");
+        Compiler.addLine("\n\tif (*hx > 0)\n\t\tgoto "+args[0]+";\n");
     }
 
     std::regex getName()

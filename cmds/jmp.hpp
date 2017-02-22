@@ -23,7 +23,7 @@ public:
             exit(0);
         }
 
-        Compiler.addLine("fx = "+args[0]+"();");
+        Compiler.addLine("*fx = "+args[0]+"();");
     }
 
     std::regex getName()

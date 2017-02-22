@@ -19,7 +19,7 @@ public:
     {
         if (!Runtime.Compile)
             Runtime.pushStack(Registers.getRegister(args[0]).getValue());
-        Compiler.addLine("stack.push("+args[0]+");");
+        Compiler.addLine("stack.push(*"+args[0]+");");
     }
 
     std::regex getName()

@@ -28,7 +28,7 @@ public:
                 Registers.setRegister(args[1], Registers.getRegister(args[1]).getValue()*Registers.getRegister(args[0]).getValue());
         }
 
-        Compiler.addLine(args[1]+" = "+args[1]+" * "+args[0]+";");
+        Compiler.addLine("*"+args[1]+" = *"+args[1]+" * *"+args[0]+";");
     }
 
     std::regex getName()
