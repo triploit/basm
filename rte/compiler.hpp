@@ -10,6 +10,8 @@ class Compiler
 private:
     std::string code = "";
 public:
+    bool COMPILE_STATIC;
+
     void addLine(std::string line)
     {
         code = code + "\t" + line + "\n";
@@ -33,6 +35,12 @@ public:
     void compile(std::string file, std::string binary)
     {
         std::ofstream afile((file+".cpp"), std::ios::out);
+        std::string _static = "";
+
+        if (COMPILE_STATIC == true)
+        {
+            _static = "-static";
+        }
 
         if (afile.is_open())
         {
@@ -41,8 +49,11 @@ public:
         }
 
         std::cout << "Compile: ";
-        system(std::string("g++ -o "+binary+" "+(file+".cpp")).c_str());
-        std::cout << "OK.\n";
+
+        if (system(std::string("g++ "+_static+" -o "+binary+" "+(file+".cpp")).c_str()) == 0)
+            std::cout << "OK.\n";
+        else
+            std::cout << "Compiling failed. Check this:\n - Is there a Syntax Error?\n - Is the GNU C++ Compiler (tested in V6.3.1) installed? (type in \"g++ -v\")\n\t- No? Check out this (Linux): https://gcc.gnu.org/wiki/InstallingGCC\n\t  or this (Windows): http://www.mingw.org/\n\t  or even this (Mac): https://www.mkyong.com/mac/how-to-install-gcc-compiler-on-mac-os-x/\n\n";
     }
 } Compiler;
 

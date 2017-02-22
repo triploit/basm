@@ -22,14 +22,14 @@ public:
             if (!Runtime.Compile)
                 Runtime.pushStack(std::stoi(args[0]));
 
-            Compiler.addLine("stack.push("+args[0]+");");
+            Compiler.addLine("stack.push(*"+args[0]+");");
         }
         else if (std::regex_match(args[0], match, r_regs))
         {
             if (!Runtime.Compile)
                 Runtime.pushStack(Registers.getRegister(args[0]).getValue());
 
-            Compiler.addLine("stack.push("+args[0]+");");
+            Compiler.addLine("stack.push(*"+args[0]+");");
         }
         else
         {

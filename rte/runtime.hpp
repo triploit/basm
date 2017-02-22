@@ -5,6 +5,7 @@
 #include <iostream>
 #include <stack>
 #include <vector>
+#include <fstream>
 
 class Runtime
 {
@@ -16,6 +17,12 @@ public:
     int LineNumber = 1;
     bool Compile = false;
     std::string CommandType = "";
+
+    std::string M_Code;
+    std::string M__M;
+    std::string M_Line;
+    std::string M_Binary;
+    std::ifstream M_File;
 
     void setCommandType(std::string s)
     {

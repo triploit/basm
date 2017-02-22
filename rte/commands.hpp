@@ -34,6 +34,7 @@
 #include "../cmds/var.hpp"
 #include "../cmds/pushv.hpp"
 #include "../cmds/ptr.hpp"
+#include "../cmds/mvv.hpp"
 
 class Commands
 {
@@ -71,6 +72,7 @@ public:
         bin_commands.push_back(new Pushv());
         bin_commands.push_back(new Ptr());
         bin_commands.push_back(new Var());
+        bin_commands.push_back(new Mvv());
     }
 
     void runCommand(std::string command, std::vector<std::string> args)
