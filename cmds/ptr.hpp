@@ -26,6 +26,7 @@ public:
         if (std::regex_match(pointer, match, r_int) || std::regex_match(pointer, match, r_hex))
         {
             int ptr = std::stoi(pointer);
+            std::cout << "MEGA_SUPER_VIOLENT_WARNING:\n\tPointer to Hex-/Int-Adresses in Memory is not fully\n\tsupported!" << std::endl;
 
             if (std::regex_match(var_reg, match, r_registers))
             {
