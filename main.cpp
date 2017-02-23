@@ -17,7 +17,6 @@ int main(int argc, char const *argv[])
 
     Tokenizer.clearAll();
     Parser.clearAll();
-    Lexer Lexer;
 
     Compiler.addLineT("#include <iostream>");
     Compiler.addLineT("#include <stack>");
@@ -43,49 +42,125 @@ int main(int argc, char const *argv[])
     Compiler.addLineT("");
     Compiler.addLineT("std::stack<int> stack;\n");
 
-    if (argc == 4 && (strcmp(argv[1], "-c") == 0 || strcmp(argv[1], "--compile") == 0))
+    std::string file = "a.asm";
+    std::string binary = "a.out";
+    bool _static = false;
+
+    for (int i = 0; i < argc; i++)
     {
-        Runtime.Compile = true;
-        Runtime.M_File = std::ifstream(argv[2], std::ios::in);
-        // std::string binary;
-        Runtime.M_Binary = argv[3];
-        // std::string Runtime.M_Code;
-        // std::string Runtime.M_Line;
-        // std::string  Runtime.M__M = "[NOTH]";
+        std::string arg = argv[i];
 
-        file_read();
+        if (arg[0] == '-')
+        {
+            if (arg[1] == 'o')
+            {
+                if ((i+1) >= argc)
+                {
+                    std::cout << "BASM 0.1.3b Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
+                    std::cout << "\t-o <file> : set binary output file name" << std::endl;
+                    std::cout << "\t-s        : static linking" << std::endl;
+                    std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<
+                    "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
+                    "is 30 KB large but with static linking it would be 2 MB.)" << std::endl;
+                }
 
-        Compiler.addLine("return 0;");
-        Compiler.addLineT("}");
+                binary = argv[i+1];
+                i++;
+                continue;
+            }
+            else if (arg[1] == 's')
+            {
+                if ((i+1) < argc && std::string(argv[i+1])[0] != '-')
+                {
+                    std::cout << "BASM 0.1.3b Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
+                    std::cout << "\t-o <file> : set binary output file name" << std::endl;
+                    std::cout << "\t-s        : static linking" << std::endl;
+                    std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<
+                              "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
+                              "is 30 KB large but with static linking it would be 2 MB.)\n";
 
-        Compiler.compile(argv[2], argv[3]);
+                    std::cout << "Option: -s does not need a argument!" << std::endl;
+                    return 0;
+                }
+
+                _static = true;
+                continue;
+            }
+            else if (arg[1] == '-')
+            {
+                if (arg == "--static")
+                {
+                    if ((i+1) < argc && std::string(argv[i+1])[0] != '-')
+                    {
+                        std::cout << "BASM 0.1.3b Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
+                        std::cout << "\t-o <file> : set binary output file name" << std::endl;
+                        std::cout << "\t-s        : static linking" << std::endl;
+                        std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<
+                                  "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
+                                  "is 30 KB large but with static linking it would be 2 MB.)\n";
+
+                        std::cout << "Option: -s does not need a argument!" << std::endl;
+                        return 0;
+                    }
+
+                    _static = true;
+                    continue;
+                }
+                else if (arg == "--output")
+                {
+                    if ((i+1) >= argc)
+                    {
+                        std::cout << "BASM 0.1.3b Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
+                        std::cout << "\t-o <file> : set binary output file name" << std::endl;
+                        std::cout << "\t-s        : static linking" << std::endl;
+                        std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<
+                                  "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
+                                  "is 30 KB large but with static linking it would be 2 MB.)" << std::endl;
+                    }
+
+                    binary = argv[i+1];
+                    i++;
+                    continue;
+                }
+            }
+            else
+            {
+                std::cout << "BASM 0.1.3b Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
+                std::cout << "\t-o <file> : set binary output file name" << std::endl;
+                std::cout << "\t-s        : static linking" << std::endl;
+                std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<
+                          "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
+                          "is 30 KB large but with static linking it would be 2 MB.)" << std::endl;
+                return 1;
+            }
+        }
+        else
+        {
+            file = arg;
+        }
     }
-    else if (argc == 5
-            && (strcmp(argv[1], "-c") == 0 || strcmp(argv[2], "-c") == 0)
-            && (strcmp(argv[2], "-s") == 0 || strcmp(argv[1], "-s") == 0))
+
+    if (argc == 1)
     {
-        Runtime.Compile = true;
-        Compiler.COMPILE_STATIC = true;
-
-        Runtime.M_File = std::ifstream(argv[3], std::ios::in);
-        Runtime.M_Binary = argv[4];
-        file_read();
-
-        Compiler.addLine("return 0;");
-        Compiler.addLineT("}");
-
-        Compiler.compile(argv[3], argv[4]);
-
-    }
-    else
-    {
-        std::cout << "BASM 0.1.3a Alpha\n\nUSAGE:" << std::endl;
-        std::cout << "\tNon-Static       basm -c <InputFile> <OutputFile>" << std::endl;
-        std::cout << "\tStatic Linking:  basm -s -c <InputFile> <OutputFile>" << std::endl;
+        std::cout << "BASM 0.1.3b Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
+        std::cout << "\t-o <file> : set binary output file name" << std::endl;
+        std::cout << "\t-s        : static linking" << std::endl;
         std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<
-        "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
-        "is 30 KB large but with static linking it would be 2 MB.)" << std::endl;
+                  "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
+                  "is 30 KB large but with static linking it would be 2 MB.)" << std::endl;
+        return 1;
     }
 
+    Runtime.Compile = true;
+    Compiler.COMPILE_STATIC = _static;
+
+    Runtime.M_File = std::ifstream(file, std::ios::in);
+    Runtime.M_Binary = binary;
+    file_read();
+
+    Compiler.addLine("return 0;");
+    Compiler.addLineT("}");
+
+    Compiler.compile(file, binary);
     return 0;
 }
