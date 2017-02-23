@@ -39,8 +39,8 @@ public:
                     Runtime.pushStack((int) args[0][i]);
             }
 
-            Compiler.addLine("for (int i = std::string(\""+args[0]+"\").size(); i >= 0; i--)");
-            Compiler.addLine("\tstack.push((int) std::string(\""+args[0]+"\")[i]);");
+            Compiler.addLine("for (int _int_sys_i_ = std::string(\""+args[0]+"\").size(); _int_sys_i_ >= 0; _int_sys_i_--)");
+            Compiler.addLine("\tstack.push((int) std::string(\""+args[0]+"\")[_int_sys_i_]);");
         }
     }
 

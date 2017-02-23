@@ -50,7 +50,7 @@ public:
 
         std::cout << "Compile: ";
 
-        if (system(std::string("g++ "+_static+" -o "+binary+" "+(file+".cpp")).c_str()) == 0)
+        if (system(std::string("g++ -w "+_static+" -o "+binary+" "+(file+".cpp")).c_str()) == 0)
             std::cout << "OK.\n";
         else
             std::cout << "Compiling failed. Check this:\n - Is there a Syntax Error?\n - Is the GNU C++ Compiler (tested in V6.3.1) installed? (type in \"g++ -v\")\n\t- No? Check out this (Linux): https://gcc.gnu.org/wiki/InstallingGCC\n\t  or this (Windows): http://www.mingw.org/\n\t  or even this (Mac): https://www.mkyong.com/mac/how-to-install-gcc-compiler-on-mac-os-x/\n\n";

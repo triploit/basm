@@ -6,6 +6,7 @@
 #include "file/file_read.hpp"
 #include "rte/compiler.hpp"
 
+void help();
 int main(int argc, char const *argv[])
 {
     std::string inp;
@@ -40,7 +41,9 @@ int main(int argc, char const *argv[])
     Compiler.addLineT("int *gx = &_r_g;");
     Compiler.addLineT("int *hx = &_r_h;");
     Compiler.addLineT("");
-    Compiler.addLineT("std::stack<int> stack;\n");
+    Compiler.addLineT("std::stack<int> stack;");
+    Compiler.addLineT("std::string _str_sys_tmp_ = \"\";");
+    Compiler.addLineT("");
 
     std::string file = "a.asm";
     std::string binary = "a.out";
@@ -56,12 +59,7 @@ int main(int argc, char const *argv[])
             {
                 if ((i+1) >= argc)
                 {
-                    std::cout << "BASM 0.1.3b Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
-                    std::cout << "\t-o <file> : set binary output file name" << std::endl;
-                    std::cout << "\t-s        : static linking" << std::endl;
-                    std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<
-                    "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
-                    "is 30 KB large but with static linking it would be 2 MB.)" << std::endl;
+                    help();
                 }
 
                 binary = argv[i+1];
@@ -72,13 +70,7 @@ int main(int argc, char const *argv[])
             {
                 if ((i+1) < argc && std::string(argv[i+1])[0] != '-')
                 {
-                    std::cout << "BASM 0.1.3b Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
-                    std::cout << "\t-o <file> : set binary output file name" << std::endl;
-                    std::cout << "\t-s        : static linking" << std::endl;
-                    std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<
-                              "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
-                              "is 30 KB large but with static linking it would be 2 MB.)\n";
-
+                    help();
                     std::cout << "Option: -s does not need a argument!" << std::endl;
                     return 0;
                 }
@@ -92,14 +84,7 @@ int main(int argc, char const *argv[])
                 {
                     if ((i+1) < argc && std::string(argv[i+1])[0] != '-')
                     {
-                        std::cout << "BASM 0.1.3b Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
-                        std::cout << "\t-o <file> : set binary output file name" << std::endl;
-                        std::cout << "\t-s        : static linking" << std::endl;
-                        std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<
-                                  "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
-                                  "is 30 KB large but with static linking it would be 2 MB.)\n";
-
-                        std::cout << "Option: -s does not need a argument!" << std::endl;
+                        help();
                         return 0;
                     }
 
@@ -110,12 +95,7 @@ int main(int argc, char const *argv[])
                 {
                     if ((i+1) >= argc)
                     {
-                        std::cout << "BASM 0.1.3b Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
-                        std::cout << "\t-o <file> : set binary output file name" << std::endl;
-                        std::cout << "\t-s        : static linking" << std::endl;
-                        std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<
-                                  "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
-                                  "is 30 KB large but with static linking it would be 2 MB.)" << std::endl;
+                        help();
                     }
 
                     binary = argv[i+1];
@@ -125,12 +105,7 @@ int main(int argc, char const *argv[])
             }
             else
             {
-                std::cout << "BASM 0.1.3b Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
-                std::cout << "\t-o <file> : set binary output file name" << std::endl;
-                std::cout << "\t-s        : static linking" << std::endl;
-                std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<
-                          "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
-                          "is 30 KB large but with static linking it would be 2 MB.)" << std::endl;
+                help();
                 return 1;
             }
         }
@@ -142,12 +117,7 @@ int main(int argc, char const *argv[])
 
     if (argc == 1)
     {
-        std::cout << "BASM 0.1.3b Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
-        std::cout << "\t-o <file> : set binary output file name" << std::endl;
-        std::cout << "\t-s        : static linking" << std::endl;
-        std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<
-                  "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
-                  "is 30 KB large but with static linking it would be 2 MB.)" << std::endl;
+        help();
         return 1;
     }
 
@@ -163,4 +133,14 @@ int main(int argc, char const *argv[])
 
     Compiler.compile(file, binary);
     return 0;
+}
+
+void help()
+{
+    std::cout << "BASM 0.1.4 Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
+    std::cout << "\t-o <file> : set binary output file name" << std::endl;
+    std::cout << "\t-s        : static linking" << std::endl;
+    std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<
+    "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
+    "is 30 KB large but with static linking it would be 2 MB.)" << std::endl;
 }
