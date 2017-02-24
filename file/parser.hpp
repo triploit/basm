@@ -36,13 +36,13 @@ public:
 
         if (Runtime.Compile)
         {
-             std::cout << "[C] " << command << std::endl;
-             std::cout << "[A] ";
+             // std::cout << "[C] " << command << std::endl;
+             // std::cout << "[A] ";
 
-             for (int i = 0; i < args.size(); i++)
-                  std::cout << args[i] << " ";
+             // for (int i = 0; i < args.size(); i++)
+            //       std::cout << args[i] << " ";
 
-             std::cout << std::endl;
+             // std::cout << std::endl;
         }
     }
 

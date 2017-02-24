@@ -152,6 +152,22 @@ private:
         {
             std::regex("(( *)(\\t*))*((I|i)(N|n)(P|p)).*"),
             std::regex("(( *)(\\t*))*((I|i)(N|n)(P|p))(( *)(\\t*))(;|)( |((( *)(\\t*))|)#.*)*")
+        },
+        {
+            std::regex("(( *)(\\t*))*((E|e)(Q|q)(I|i)).*"),
+            std::regex("(( *)(\\t*))*((E|e)(Q|q)(I|i))(( *)(\\t*))([0-9]*|(ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*)),(( *)(\\t*))([0-9]*|(ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*))(;|)( |((( *)(\\t*))|)#.*)*")
+        },
+        {
+            std::regex("(( *)(\\t*))*((G|g)(Q|q)(I|i)).*"),
+            std::regex("(( *)(\\t*))*((G|g)(Q|q)(I|i))(( *)(\\t*))([0-9]*|(ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*)),(( *)(\\t*))([0-9]*|(ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*))(;|)( |((( *)(\\t*))|)#.*)*")
+        },
+        {
+            std::regex("(( *)(\\t*))*((L|l)(Q|q)(I|i)).*"),
+            std::regex("(( *)(\\t*))*((L|l)(Q|q)(I|i))(( *)(\\t*))([0-9]*|(ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*)),(( *)(\\t*))([0-9]*|(ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*))(;|)( |((( *)(\\t*))|)#.*)*")
+        },
+        {
+            std::regex("(( *)(\\t*))*((N|n)(Q|q)(I|i)).*"),
+            std::regex("(( *)(\\t*))*((N|n)(Q|q)(I|i))(( *)(\\t*))([0-9]*|(ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*)),(( *)(\\t*))([0-9]*|(ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*))(;|)( |((( *)(\\t*))|)#.*)*")
         }
     };
 
@@ -190,7 +206,11 @@ private:
         "var",
         "pushv",
         "mvv",
-        "inp"
+        "inp",
+        "eqi",
+        "gqi",
+        "lqi",
+        "nqi"
     };
 
 public:

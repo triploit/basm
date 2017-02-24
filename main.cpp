@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include "file/file_read.hpp"
+#include "file/file_parse.hpp"
 #include "rte/compiler.hpp"
 
 void help();
@@ -126,10 +127,14 @@ int main(int argc, char const *argv[])
 
     Runtime.M_File = std::ifstream(file, std::ios::in);
     Runtime.M_Binary = binary;
-    file_read();
+    file_read(file);
+    file_parse(file);
 
-    Compiler.addLine("return 0;");
-    Compiler.addLineT("}");
+    if (!Labels.existsLabel("main"))
+    {
+        std::cout << "ERROR: MAIN_NOT_FOUND: Main Function not declared!" << std::endl;
+        exit(1);
+    }
 
     Compiler.compile(file, binary);
     return 0;

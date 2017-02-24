@@ -36,6 +36,10 @@
 #include "../cmds/ptr.hpp"
 #include "../cmds/mvv.hpp"
 #include "../cmds/inp.hpp"
+#include "../cmds/eqi.hpp"
+#include "../cmds/gqi.hpp"
+#include "../cmds/lqi.hpp"
+#include "../cmds/nqi.hpp"
 
 class Commands
 {
@@ -75,6 +79,10 @@ public:
         bin_commands.push_back(new Var());
         bin_commands.push_back(new Mvv());
         bin_commands.push_back(new Inp());
+        bin_commands.push_back(new Eqi());
+        bin_commands.push_back(new Nqi());
+        bin_commands.push_back(new Gqi());
+        bin_commands.push_back(new Lqi());
     }
 
     void runCommand(std::string command, std::vector<std::string> args)

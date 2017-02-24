@@ -18,7 +18,12 @@ main:
 	pushv 	x
 	outl
 
-	push 	"Input: "
+	eqi		1, 2;
+	rts		hx
+	outl
+	pop
+
+	push	"Input: "
 	mov		7, hx;
 	jmp		write_string
 	inp
@@ -33,5 +38,7 @@ write_string:
 	    ptc
 	    pop
 	    sub 1, hx
-    ggn beg
+
+    ggn		beg
+	mov		0, hx
     return
