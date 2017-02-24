@@ -29,8 +29,16 @@ main:
 	mov		7, hx;
 	jmp		write_string
 	inp
+	mov		hx, gx
+
+	push	"Your input was: "
+	mov		17, hx
+	jmp		write_string
+
+	mov		gx, hx
 	jmp 	write_string
 	push 	10
+
 	ptc
 	pop
 	hlt
@@ -42,5 +50,4 @@ write_string:
 		sub		1, hx
 
 	ggn		beg
-	mov		0, hx
 	return
