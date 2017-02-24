@@ -11,6 +11,7 @@ class Runtime
 {
 private:
     std::stack<int> b_stack;
+    std::vector<std::string> included_files;
     bool jump;
 
 public:
@@ -23,6 +24,22 @@ public:
     std::string M_Line;
     std::string M_Binary;
     std::ifstream M_File;
+
+    void addFile(std::string name)
+    {
+        included_files.push_back(name);
+    }
+
+    bool existsFile(std::string name)
+    {
+        for (int i = 0; i < included_files.size(); i++)
+        {
+            if (included_files[i] == name)
+                return true;
+        }
+
+        return false;
+    }
 
     void setCommandType(std::string s)
     {

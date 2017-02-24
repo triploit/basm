@@ -18,7 +18,9 @@ main:
 	pushv 	x
 	outl
 
-	eqi		1, 2;
+	mov 	1, ax
+	mov		2, bx
+	eqi		ax, bx
 	rts		hx
 	outl
 	pop
@@ -35,10 +37,10 @@ main:
 
 write_string:
 	.beg:
-	    ptc
-	    pop
-	    sub 1, hx
+		ptc
+		pop
+		sub		1, hx
 
-    ggn		beg
+	ggn		beg
 	mov		0, hx
-    return
+	return

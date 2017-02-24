@@ -1,4 +1,4 @@
-%include "t2.asm"
+%%t2.asm
 
 main:
     jmp _t;

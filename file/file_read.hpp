@@ -23,13 +23,29 @@ void file_read(std::string __file)
         int i = 0;
         while (std::getline(_file, Runtime.M_Line))
         {
-            std::cout << "F:" << __file << std::endl;
+            // std::cout << "F:" << __file << std::endl;
             tri::string s = Runtime.M_Line;
             s = s.trim();
             if (s.at(0) == '%')
             {
-                file_read(s.replace("%include ", "").replaceAll("\"", "").cxs());
-                Runtime.M_Line = "";
+                if (s.at(1) == '%')
+                {
+                    std::string __afile = s.cxs().substr(2, s.length()-1);
+                    file_read(__afile);
+                    Runtime.M_Line = "";
+                }
+                else
+                {
+                    std::string __afile = s.cxs().substr(1, s.length()-1);
+                    #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+                        __afile = "C:\\basm\\" + __afile;
+                    #else
+                        __afile = "/usr/include/basm/" + __afile;
+                    #endif
+
+                    file_read(__afile);
+                    Runtime.M_Line = "";
+                }
                 continue;
             }
 
@@ -103,7 +119,7 @@ void file_read(std::string __file)
     }
     else
     {
-        std::cerr << "ERROR: Unable to open file\n";
+        std::cerr << "ERROR: Unable to open file " << __file << "\n";
         exit(1);
     }
 }

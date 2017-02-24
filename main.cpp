@@ -8,6 +8,7 @@
 #include "rte/compiler.hpp"
 
 void help();
+
 int main(int argc, char const *argv[])
 {
     std::string inp;
@@ -142,7 +143,7 @@ int main(int argc, char const *argv[])
 
 void help()
 {
-    std::cout << "BASM 0.1.4 Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
+    std::cout << "BASM 0.1.4a Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
     std::cout << "\t-o <file> : set binary output file name" << std::endl;
     std::cout << "\t-s        : static linking" << std::endl;
     std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<

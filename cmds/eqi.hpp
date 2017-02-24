@@ -63,7 +63,14 @@ public:
 
         if (nice == 2)
         {
-            Compiler.addLine("if ("+var1+" == "+var2+")\n\t\t*hx = 1;\n\telse\n\t\t*hx = 0;");
+            if (std::regex_match(var1, match, r_int) && std::regex_match(var2, match, r_int))
+                Compiler.addLine("\n\tif ("+var1+" == "+var2+")\n\t\t*hx = 1;\n\telse\n\t\t*hx = 0;\n");
+            else if (std::regex_match(var1, match, r_int))
+                Compiler.addLine("\n\tif ("+var1+" == *"+var2+")\n\t\t*hx = 1;\n\telse\n\t\t*hx = 0;\n");
+            else if (std::regex_match(var2, match, r_int))
+                Compiler.addLine("\n\tif (*"+var1+" == "+var2+")\n\t\t*hx = 1;\n\telse\n\t\t*hx = 0;\n");
+            else
+                Compiler.addLine("\n\tif (*"+var1+" == *"+var2+")\n\t\t*hx = 1;\n\telse\n\t\t*hx = 0;\n");
             nice = 0;
         }
         else
