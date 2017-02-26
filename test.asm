@@ -45,16 +45,9 @@ main:
 
 	arr a
 	ata a, "Hello World!"
-	ags a, ax
-	rts ax
-	outl
-	pop
-
-	aga a, 0, ax
-	rts ax
-	outl
-	ptc
-	pop
+	pushv a
+	ags a, hx
+	jmp write_string
 
 	push 10
 	ptc

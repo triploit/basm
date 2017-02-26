@@ -29,6 +29,7 @@ public:
 		else if (Lists.existsList(var))
 		{
 			Compiler.addLine("\n\tfor (int _int_sys_i_ = "+var+".size(); _int_sys_i_ >= 0; _int_sys_i_--)\n\t\tstack.push("+var+"[_int_sys_i_]);");
+			return;
 		}
 
         std::cout << "ERROR: LINE " << Runtime.LineNumber << ": VARIABLE_DOESNT_EXIST: \"" << var << "\"" << std::endl;
