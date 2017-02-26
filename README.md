@@ -8,5 +8,5 @@ At the start of this project, BASM was made for working with TBI3 (Triploit Bina
 Actually, it should be an interpreted programming language, but it will translate to C++.
 
 
-BASM is a small pseudo-assembler ant doesn't have many bugs, so I think. If you find one, please create an Issue!  
+BASM is a small pseudo-assembler and doesn't have many bugs, so I think. If you find one, please create an Issue!  
 That's it so far, a documentation will follow later.
