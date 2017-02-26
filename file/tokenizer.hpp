@@ -38,8 +38,8 @@ public:
 
         if (code == "" || code.size() == 0)
         {
-            std::cout << "[ MAIN ]:[ TOKENIZER ]: ERROR:" << std::endl;
-            std::cout << "\tThere is no Code to tokenize!" << std::endl;
+            // std::cout << "[ MAIN ]:[ TOKENIZER ]: ERROR:" << std::endl;
+            // std::cout << "\tThere is no Code to tokenize!" << std::endl;
             return 1;
         }
 

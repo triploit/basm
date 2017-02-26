@@ -80,6 +80,10 @@ int main(int argc, char const *argv[])
                 _static = true;
                 continue;
             }
+			else if (arg[1] == 'v')
+			{
+				Runtime.Verbose = true;
+			}
             else if (arg[1] == '-')
             {
                 if (arg == "--static")
@@ -104,6 +108,10 @@ int main(int argc, char const *argv[])
                     i++;
                     continue;
                 }
+				else if (arg == "--verbose")
+				{
+					Runtime.Verbose = true;
+				}
             }
             else
             {
@@ -143,7 +151,7 @@ int main(int argc, char const *argv[])
 
 void help()
 {
-    std::cout << "BASM 0.1.4a Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
+    std::cout << "BASM 0.1.4b Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
     std::cout << "\t-o <file> : set binary output file name" << std::endl;
     std::cout << "\t-s        : static linking" << std::endl;
     std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<

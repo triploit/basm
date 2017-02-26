@@ -7,6 +7,7 @@
 #include "../rte/commands.hpp"
 #include "../rte/registers.hpp"
 #include "../rte/labels.hpp"
+#include "../rte/files.hpp"
 
 #include "lexer.hpp"
 #include "tokenizer.hpp"
@@ -16,14 +17,14 @@ void file_read(std::string __file)
 {
     Lexer Lexer;
     std::ifstream _file(__file);
-    std::cout << "COMPILE: " << __file << std::endl;
+    // std::cout << "COMPILE: " << __file << std::endl;
+	Files.addFile(File(__file));
 
     if (_file.is_open())
     {
         int i = 0;
         while (std::getline(_file, Runtime.M_Line))
         {
-            // std::cout << "F:" << __file << std::endl;
             tri::string s = Runtime.M_Line;
             s = s.trim();
             if (s.at(0) == '%')
@@ -31,20 +32,52 @@ void file_read(std::string __file)
                 if (s.at(1) == '%')
                 {
                     std::string __afile = s.cxs().substr(2, s.length()-1);
-                    file_read(__afile);
-                    Runtime.M_Line = "";
+					if (Runtime.Verbose)
+			        	std::cout << "[INC] File: " << __afile << std::endl;
+
+					if (Files.existsFile(__file))
+					{
+						if (!Files.getFile(__file).existsFile(__afile))
+						{
+		                    file_read(__afile);
+		                    Runtime.M_Line = "";
+							Files.addIncludeFile(__file, __afile);
+							// Files.listIncludeFiles(__file);
+						}
+						else
+						{
+							std::cout << "[FILE] Ignore Include-File \"" << __afile << "\", file was already included to the file." << std::endl;
+						}
+					}
                 }
                 else
                 {
                     std::string __afile = s.cxs().substr(1, s.length()-1);
-                    #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
-                        __afile = "C:\\basm\\" + __afile;
-                    #else
-                        __afile = "/usr/include/basm/" + __afile;
-                    #endif
 
-                    file_read(__afile);
-                    Runtime.M_Line = "";
+					if (Runtime.Verbose)
+			        	std::cout << "[INC] File: " << __afile << std::endl;
+
+					#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+					    __afile = "C:\\basm\\" + __afile;
+					#else
+					   	__afile = "/usr/include/basm/" + __afile;
+					#endif
+
+					if (Files.existsFile(__file))
+					{
+						if (!Files.getFile(__file).existsFile(__afile))
+						{
+							file_read(__afile);
+							Runtime.M_Line = "";
+							Files.addIncludeFile(__file, __afile);
+							// Files.listIncludeFiles(__file);
+						}
+						else
+						{
+							if (Runtime.Verbose)
+					        	std::cout << "[FILE] Ignore Include-File \"" << __afile << "\", file was already included to the file." << std::endl;
+						}
+					}
                 }
                 continue;
             }
@@ -54,7 +87,8 @@ void file_read(std::string __file)
             tri::string l = Runtime.M_Line;
             l = l.trim();
 
-            std::cout << "[LEX] LINE " << Runtime.LineNumber << ": ";
+			if (Runtime.Verbose)
+				std::cout << "[LEX] LINE " << Runtime.LineNumber << ": ";
             switch (Lexer.isNiceCommand(l.cxs()))
             {
                 case 0:
@@ -68,20 +102,22 @@ void file_read(std::string __file)
                         }
                         else
                         {
-                            std::cout << " OK." << std::endl;
+							if (Runtime.Verbose)
+								std::cout << " OK." << std::endl;
                         }
                     }
                     else
                     {
-                        std::cout << " OK." << std::endl;
+						if (Runtime.Verbose)
+							std::cout << " OK." << std::endl;
                     }
                     break;
                 case 1:
-                    std::cout << "ERROR: SYNTAX_ERROR: \"" << l.cxs() << "\"" << std::endl;
+                    std::cout << "ERROR: LINE " << Runtime.LineNumber << ": SYNTAX_ERROR: \"" << l.cxs() << "\"" << std::endl;
                     exit(1);
                     break;
                 case 2:
-                    std::cout << "ERROR: COMMAND_NOT_FOUND: \"" << l.cxs() << "\"" << std::endl;
+                    std::cout << "ERROR: LINE " << Runtime.LineNumber << ": COMMAND_NOT_FOUND: \"" << l.cxs() << "\"" << std::endl;
                     exit(1);
                     break;
             }
@@ -114,7 +150,7 @@ void file_read(std::string __file)
             Runtime.LineNumber++;
         }
 
-        Runtime.LineNumber = 1;
+        // Runtime.LineNumber = 1;
         _file.close();
     }
     else

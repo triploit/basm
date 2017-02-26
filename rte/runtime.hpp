@@ -18,12 +18,14 @@ public:
     int LineNumber = 1;
     bool Compile = false;
     std::string CommandType = "";
+	bool Verbose = false;
 
     std::string M_Code;
     std::string M__M;
     std::string M_Line;
     std::string M_Binary;
     std::ifstream M_File;
+
 
     void addFile(std::string name)
     {

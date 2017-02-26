@@ -67,7 +67,8 @@ void file_parse(std::string __file)
                 // Compiler.addLineT(l.cxs());
                  Runtime.M__M = mark;
                 Labels.setAktLabel( Runtime.M__M);
-                std::cout << "[L]:[" << (i) << "] " << mark<< std::endl;
+				if (Runtime.Verbose)
+					std::cout << "[L]:[" << (i) << "] " << mark<< std::endl;
 
                 Compiler.addLineT("int " + mark + "()");
                 Compiler.addLineT("{");
@@ -75,7 +76,8 @@ void file_parse(std::string __file)
             }
             else if (l.at(l.length() - 1) == ':' && l.at(0) == '.')
             {
-                std::cout << "[LG]:[" << (i) << "] " << l.replace(":", "").replace(".", "").cxs() << std::endl;
+				if (Runtime.Verbose)
+					std::cout << "[LG]:[" << (i) << "] " << l.replace(":", "").replace(".", "").cxs() << std::endl;
 
                 Compiler.addLineT(l.replace(".", "").cxs());
                 Labels.addGoto(Goto(l.replace(".", "").replace(":", "").cxs(), i, Labels.getAktLabel()));
