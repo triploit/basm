@@ -40,7 +40,24 @@ main:
 	push 10
 
 	ptc
+	ptc
 	pop
+
+	arr a
+	ata a, "Hello World!"
+	ags a, ax
+	rts ax
+	outl
+	pop
+
+	aga a, 0, ax
+	rts ax
+	outl
+	ptc
+	pop
+
+	push 10
+	ptc
 	hlt
 
 write_string:

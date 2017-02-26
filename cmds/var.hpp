@@ -6,6 +6,7 @@
 #include "../rte/registers.hpp"
 #include "../rte/compiler.hpp"
 #include "../rte/variables.hpp"
+#include "../rte/lists.hpp"
 
 class Var : public Command
 {
@@ -23,7 +24,8 @@ public:
         std::string var = args[0];
 
         if (Variables.existsVariable(var) || Variables.existsRealVariable(var)
-            || Registers.existsRegister(var) || Registers.existsRealRegister(var))
+            || Registers.existsRegister(var) || Registers.existsRealRegister(var)
+			|| Lists.existsList(var))
         {
             std::cout << "ERROR: LINE " << Runtime.LineNumber << ": INVALID_VARIABLE_NAME: \"" << var << "\": Variable/Register already exists!" << std::endl;
             exit(1);

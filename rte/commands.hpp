@@ -40,6 +40,11 @@
 #include "../cmds/gqi.hpp"
 #include "../cmds/lqi.hpp"
 #include "../cmds/nqi.hpp"
+#include "../cmds/arr.hpp"
+#include "../cmds/ata.hpp"
+#include "../cmds/aga.hpp"
+#include "../cmds/ags.hpp"
+#include "../cmds/arl.hpp"
 
 class Commands
 {
@@ -83,6 +88,11 @@ public:
         bin_commands.push_back(new Nqi());
         bin_commands.push_back(new Gqi());
         bin_commands.push_back(new Lqi());
+        bin_commands.push_back(new Arr());
+        bin_commands.push_back(new Ata());
+        bin_commands.push_back(new Aga());
+        bin_commands.push_back(new Ags());
+        bin_commands.push_back(new Arl());
     }
 
     void runCommand(std::string command, std::vector<std::string> args)
