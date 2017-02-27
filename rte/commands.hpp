@@ -44,7 +44,9 @@
 #include "../cmds/ata.hpp"
 #include "../cmds/aga.hpp"
 #include "../cmds/ags.hpp"
+#include "../cmds/asv.hpp"
 #include "../cmds/arl.hpp"
+#include "../cmds/asa.hpp"
 
 class Commands
 {
@@ -92,7 +94,9 @@ public:
         bin_commands.push_back(new Ata());
         bin_commands.push_back(new Aga());
         bin_commands.push_back(new Ags());
+        bin_commands.push_back(new Asv());
         bin_commands.push_back(new Arl());
+        bin_commands.push_back(new Asa());
     }
 
     void runCommand(std::string command, std::vector<std::string> args)

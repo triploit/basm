@@ -178,22 +178,29 @@ private:
 			std::regex("(( *)(\\t*))*((A|a)(T|t)(A|a))( |\\t)(( *)(\\t*))([A-Za-z0-9_]*),(( *)(\\t*))([0-9]*|(ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*)|(\"(?:(?!\").)*\"))(;|)( |((( *)(\\t*))|)#.*)*")
 		},
 		{ // arl
-			std::regex("(( *)(\\t*))*((A|a)(T|t)(A|a)).*"),
-			std::regex("(( *)(\\t*))*((A|a)(T|t)(A|a))( |\\t)(( *)(\\t*))([A-Za-z0-9_]*),(( *)(\\t*))([0-9]*|(ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*))(;|)( |((( *)(\\t*))|)#.*)*")
+			std::regex("(( *)(\\t*))*((A|a)(R|r)(L|l)).*"),
+			std::regex("(( *)(\\t*))*((A|a)(R|r)(A|a))( |\\t)(( *)(\\t*))([A-Za-z0-9_]*),(( *)(\\t*))([0-9]*|(ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*))(;|)( |((( *)(\\t*))|)#.*)*")
 		},
 		{ // ags
 			std::regex("(( *)(\\t*))*((A|a)(G|g)(S|s)).*"),
 			std::regex("(( *)(\\t*))*((A|a)(G|g)(S|s))( |\\t)(( *)(\\t*))([A-Za-z0-9_]*),(( *)(\\t*))((ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*))(;|)( |((( *)(\\t*))|)#.*)*")
 		},
-		{ // aga
-			std::regex("(( *)(\\t*))*((A|a)(G|g)(A|a)).*"),
-			std::regex("(( *)(\\t*))*((A|a)(G|g)(A|a))( |\\t)(( *)(\\t*))([A-Za-z0-9_]*),(( *)(\\t*))([0-9]*|(ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*)),(( *)(\\t*))((ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*))(;|)( |((( *)(\\t*))|)#.*)*")
-		}
+        { // aga
+            std::regex("(( *)(\\t*))*((A|a)(G|g)(A|a)).*"),
+            std::regex("(( *)(\\t*))*((A|a)(G|g)(A|a))( |\\t)(( *)(\\t*))([A-Za-z0-9_]*),(( *)(\\t*))([0-9]*|(ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*)),(( *)(\\t*))((ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*))(;|)( |((( *)(\\t*))|)#.*)*")
+        },
+        { // asv
+            std::regex("(( *)(\\t*))*((A|a)(S|s)(V|v)).*"),
+            std::regex("(( *)(\\t*))*((A|a)(S|s)(V|v))( |\\t)(( *)(\\t*))([A-Za-z0-9_]*),(( *)(\\t*))([0-9]*|(ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*)),(( *)(\\t*))((ax|bx|cx|dx|ex|fx|gx|hx)|([A-Za-z0-9_]*))(;|)( |((( *)(\\t*))|)#.*)*")
+        },
+        { // asa
+            std::regex("(( *)(\\t*))*((A|a)(S|s)(A|a)).*"),
+            std::regex("(( *)(\\t*))*((A|a)(S|s)(A|a))( |\\t)(( *)(\\t*))([A-Za-z0-9_]*),(( *)(\\t*))([A-Za-z0-9_]*)(( *)(\\t*))(;|)( |((( *)(\\t*))|)#.*)*")
+        }
     };
 
     std::vector<std::string> COMMAND_NAME =
     {
-        "NOTHING",
         "COMMENT",
         "FUNCTION",
         "GOTOLABEL",
@@ -231,11 +238,14 @@ private:
         "gqi",
         "lqi",
         "nqi",
-		"arr",
-		"ata",
-		"arl",
-		"ags",
-		"aga"
+        "arr",
+        "ata",
+        "arl",
+        "ags",
+        "aga",
+        "asv",
+        "asa",
+        "asa"
     };
 
 public:

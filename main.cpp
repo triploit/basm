@@ -21,6 +21,13 @@ int main(int argc, char const *argv[])
     Tokenizer.clearAll();
     Parser.clearAll();
 
+    Variables.addVariable(Variable("var_ax", "_r_var_ax"));
+    Variables.addVariable(Variable("var_bx", "_r_var_bx"));
+    Variables.addVariable(Variable("var_cx", "_r_var_cx"));
+    Lists.addList(List("list_ax"));
+    Lists.addList(List("list_bx"));
+    Lists.addList(List("list_cx"));
+
     Compiler.addLineT("#include <iostream>");
     Compiler.addLineT("#include <stack>");
     Compiler.addLineT("#include <vector>");
@@ -33,6 +40,9 @@ int main(int argc, char const *argv[])
     Compiler.addLineT("int _r_f = 0;");
     Compiler.addLineT("int _r_g = 0;");
     Compiler.addLineT("int _r_h = 0;");
+    Compiler.addLineT("int _r_var_ax = 0;");
+    Compiler.addLineT("int _r_var_bx = 0;");
+    Compiler.addLineT("int _r_var_cx = 0;");
     Compiler.addLineT("");
     Compiler.addLineT("int *ax = &_r_a;");
     Compiler.addLineT("int *bx = &_r_b;");
@@ -42,8 +52,14 @@ int main(int argc, char const *argv[])
     Compiler.addLineT("int *fx = &_r_f;");
     Compiler.addLineT("int *gx = &_r_g;");
     Compiler.addLineT("int *hx = &_r_h;");
+    Compiler.addLineT("int *var_ax = &_r_var_ax;");
+    Compiler.addLineT("int *var_bx = &_r_var_bx;");
+    Compiler.addLineT("int *var_cx = &_r_var_cx;");
     Compiler.addLineT("");
     Compiler.addLineT("std::stack<int> stack;");
+    Compiler.addLineT("std::vector<int> list_ax;");
+    Compiler.addLineT("std::vector<int> list_bx;");
+    Compiler.addLineT("std::vector<int> list_cx;");
     Compiler.addLineT("std::string _str_sys_tmp_ = \"\";");
     Compiler.addLineT("");
 
@@ -151,7 +167,8 @@ int main(int argc, char const *argv[])
 
 void help()
 {
-    std::cout << "BASM 0.1.5 Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
+    std::cout << "BASM 0.1.5a Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << 
+std::endl;
     std::cout << "\t-o <file> : set binary output file name" << std::endl;
     std::cout << "\t-s        : static linking" << std::endl;
     std::cout << "\t-v        : verbose compiling" << std::endl;

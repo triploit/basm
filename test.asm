@@ -1,16 +1,16 @@
 main:
 	var x
-	ptr ax, x
-	mov 100, ax
-	pushv x
+	ptr ax, x		# Pointer to x
+	mov 100, ax		# 100 -> ax -> x
+	pushv x			# push x to stack
 	outl
-	ptr ax, ax
+	ptr ax, ax		# Pointer to ax (ax -> ax)
 
-	mov 300, ax
-	pushv x
+	mov 300, ax		# 300 -> ax
+	pushv x			# push x to stack (100)
 	outl
 	pop
-	push ax
+	push ax			# push ax to stack (300)
 	outl
 
 	mov 400, ax
