@@ -143,14 +143,20 @@ void file_read(std::string __file)
             {
                 Labels.addLabel(l.replace(":", "").cxs(), i);
                 Compiler.addLineT("int " + l.replace(":", "").cxs() + "();");
-                 Runtime.M__M = l.replace(":", "").cxs();
+                Runtime.M__M = l.replace(":", "").cxs();
+                Labels.setAktLabel(l.replace(":", "").cxs());
                 // std::cout << "[L]:[" << (i) << "] " << l.replace(":", "").cxs() << std::endl;
+            }
+            else if (l.at(l.length() - 1) == ':' && l.at(0) == '.')
+            {
+                Labels.addGoto(Goto(l.replace(".", "").replace(":", "").cxs(), i, Labels.getAktLabel()));
             }
 
             Runtime.LineNumber++;
         }
 
         // Runtime.LineNumber = 1;
+        Labels.setAktLabel("");
         _file.close();
     }
     else

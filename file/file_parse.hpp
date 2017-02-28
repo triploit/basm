@@ -80,7 +80,7 @@ void file_parse(std::string __file)
 					std::cout << "[LG]:[" << (i) << "] " << l.replace(":", "").replace(".", "").cxs() << std::endl;
 
                 Compiler.addLineT(l.replace(".", "").cxs());
-                Labels.addGoto(Goto(l.replace(".", "").replace(":", "").cxs(), i, Labels.getAktLabel()));
+                // Labels.addGoto(Goto(l.replace(".", "").replace(":", "").cxs(), i, Labels.getAktLabel()));
                 Runtime.M_Line = "";
             }
             else
