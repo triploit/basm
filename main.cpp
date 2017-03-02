@@ -31,6 +31,8 @@ int main(int argc, char const *argv[])
     Compiler.addLineT("#include <iostream>");
     Compiler.addLineT("#include <stack>");
     Compiler.addLineT("#include <vector>");
+    Compiler.addLineT("#include <stdio.h>");
+    Compiler.addLineT("#include <stdlib.h>");
     Compiler.addLineT("");
     Compiler.addLineT("int _r_a = 0;");
     Compiler.addLineT("int _r_b = 0;");
@@ -167,7 +169,7 @@ int main(int argc, char const *argv[])
 
 void help()
 {
-    std::cout << "BASM 0.1.5b Alpha\n\nUSAGE:\n\tbasm <file> ...\n" << 
+    std::cout << "BASM 0.1.5c Alpha\n\nUSAGE:\n\tbasm <file> ...\n" <<
 std::endl;
     std::cout << "\t-o <file> : set binary output file name" << std::endl;
     std::cout << "\t-s        : static linking" << std::endl;
