@@ -1,6 +1,5 @@
 func install
 {
-  cd ..
   g++ main.cpp -o basm -w -static
   chmod +x basm
   sudo mv basm /usr/bin/basm
