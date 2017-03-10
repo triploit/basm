@@ -14,3 +14,11 @@ func remove
 {
   sudo rm /usr/bin/basm
 }
+
+func install_win
+{
+  echo Ich bin auf Windows!
+  [
+    echo Hallo!
+  ]
+}
