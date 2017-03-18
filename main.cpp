@@ -64,6 +64,7 @@ int main(int argc, char const *argv[])
     Compiler.addLineT("std::vector<int> list_cx;");
     Compiler.addLineT("std::string _str_sys_tmp_ = \"\";");
     Compiler.addLineT("");
+    Compiler.addLineT("bool _sys_is_number_(const std::string& s) { std::string::const_iterator it = s.begin(); while (it != s.end() && std::isdigit(*it)) ++it; return !s.empty() && it == s.end(); }");
 
     std::string file = "a.asm";
     std::string binary = "a.out";
@@ -155,6 +156,7 @@ int main(int argc, char const *argv[])
     Runtime.M_File = std::ifstream(file, std::ios::in);
     Runtime.M_Binary = binary;
     file_read(file);
+    Runtime.LineNumber = 1;
     file_parse(file);
 
     if (!Labels.existsLabel("main"))
@@ -169,7 +171,7 @@ int main(int argc, char const *argv[])
 
 void help()
 {
-    std::cout << "BASM 0.1.5c Alpha\n\nUSAGE:\n\tbasm <file> ...\n" <<
+    std::cout << "BASM 0.1.6 Alpha\n\nUSAGE:\n\tbasm <file> ...\n" <<
 std::endl;
     std::cout << "\t-o <file> : set binary output file name" << std::endl;
     std::cout << "\t-s        : static linking" << std::endl;

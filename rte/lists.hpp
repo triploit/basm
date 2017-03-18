@@ -16,6 +16,19 @@ public:
 		b_lists.push_back(l);
 	}
 
+	void clearAll()
+	{
+		for (int i = 0; i < b_lists.size(); i++)
+		{
+			if (b_lists[i].getName() != "list_ax" &&
+				b_lists[i].getName() != "list_bx" &&
+				b_lists[i].getName() != "list_cx")
+			{
+				b_lists.erase(b_lists.begin()+i);
+			}
+		}
+	}
+
 	bool existsList(std::string _name)
 	{
 		for (int i = 0; i < b_lists.size(); i++)

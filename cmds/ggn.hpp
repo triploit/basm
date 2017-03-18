@@ -7,7 +7,7 @@
 #include "../rte/compiler.hpp"
 #include "../rte/registers.hpp"
 
-class Ggn : public Command
+class Ggn : public Command // if hx > 0 then goto x
 {
 private:
     std::regex name = std::regex("((G|g)(G|g)(N|n))");

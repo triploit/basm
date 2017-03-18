@@ -8,7 +8,7 @@
 #include "../rte/variables.hpp"
 #include "../rte/lists.hpp"
 
-class Arr : public Command
+class Arr : public Command // Create array; arr x;
 {
 private:
     std::regex name = std::regex("((A|a)(R|r)(R|r))");

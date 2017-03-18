@@ -8,7 +8,7 @@
 #include "../rte/variables.hpp"
 #include "../rte/lists.hpp"
 
-class Asa : public Command
+class Asa : public Command // Set Array To Array; arr x, y; x = y
 {
 private:
     std::regex name = std::regex("((A|a)(S|s)(A|a))");

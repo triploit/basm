@@ -6,7 +6,7 @@
 #include "../rte/registers.hpp"
 #include "../rte/compiler.hpp"
 
-class Hlt : public Command
+class Hlt : public Command // stop programm
 {
 private:
     std::regex name = std::regex("^((H|h)(L|l)(T|t))");

@@ -8,7 +8,7 @@
 #include "../rte/variables.hpp"
 #include "../rte/lists.hpp"
 
-class Ags : public Command
+class Ags : public Command // Array Get Size x -> y; ags array, variable
 {
 private:
     std::regex name = std::regex("((A|a)(G|g)(S|s))");
@@ -26,7 +26,7 @@ public:
 
 		if (!Lists.existsList(var))
 		{
-			std::cout << "ERROR: LINE " << Runtime.LineNumber << ": AGA: ARRAY_NOT_FOUND: " << var << std::endl;
+			std::cout << "ERROR: LINE " << Runtime.LineNumber << ": AGS: ARRAY_NOT_FOUND: " << var << std::endl;
 			exit(1);
 		}
 
@@ -42,13 +42,13 @@ public:
 			}
 			else
 			{
-				std::cout << "ERROR: LINE " << Runtime.LineNumber << ": ARL: VARIABLE_NOT_FOUND: " << o_var << std::endl;
+				std::cout << "ERROR: LINE " << Runtime.LineNumber << ": AGS: VARIABLE_NOT_FOUND: " << o_var << std::endl;
 				exit(1);
 			}
 		}
 		else
 		{
-			std::cout << "ERROR: LINE " << Runtime.LineNumber << ": ARL: INVALID_VALUE: " << o_var << std::endl;
+			std::cout << "ERROR: LINE " << Runtime.LineNumber << ": AGS: INVALID_VALUE: " << o_var << std::endl;
 			exit(1);
 		}
     }

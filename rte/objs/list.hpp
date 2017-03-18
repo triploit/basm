@@ -39,7 +39,7 @@ public:
 		return name;
 	}
 
-	std::string setName(std::string _name)
+	void setName(std::string _name)
 	{
 		name = _name;
 	}

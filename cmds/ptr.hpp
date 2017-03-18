@@ -23,24 +23,30 @@ public:
         std::string var_reg = args[0];
         std::string pointer = args[1];
 
+        if (std::regex_match(var_reg, match, r_int))
+        {
+            std::cout << "ERROR: LINE " << Runtime.LineNumber << ": PTR: \"" << args[0] << " is a number! That is not correct :(\"";
+            exit(1);
+        }
+
         if (std::regex_match(pointer, match, r_int) || std::regex_match(pointer, match, r_hex))
         {
-            int ptr = std::stoi(pointer);
+            std::string ptr = pointer;
             std::cout << "MEGA_SUPER_VIOLENT_WARNING:\n\tPointer to Hex-/Int-Adresses in Memory is not fully\n\tsupported!" << std::endl;
 
             if (std::regex_match(var_reg, match, r_registers))
             {
-                Compiler.addLine(var_reg + " = " + std::to_string(ptr) + ";");
+                Compiler.addLine(var_reg + " = " + ptr + ";");
             }
             else
             {
                 if (Variables.existsVariable(var_reg))
                 {
-                    Compiler.addLine(var_reg + " = " + std::to_string(ptr) + ";");
+                    Compiler.addLine(var_reg + " = " + ptr + ";");
                 }
                 else
                 {
-                    std::cout << "VARIABLE_DOESNT_EXIST: LINE " << Runtime.LineNumber << ": PTR: \"ptr " << args[0] << ", " << args[1] << ";\"\n";
+                    std::cout << "ERROR: LINE " << Runtime.LineNumber << ": PTR: VARIABLE_DOESNT_EXIST: \"ptr " << args[0] << ", " << args[1] << ";\"\n";
                     exit(1);
                 }
             }
@@ -63,7 +69,7 @@ public:
                 }
                 else
                 {
-                    std::cout << "VARIABLE_DOESNT_EXIST: LINE " << Runtime.LineNumber << ": PTR: \"ptr " << args[0] << ", " << args[1] << ";\"\n";
+                    std::cout << "ERROR: LINE " << Runtime.LineNumber << ": PTR: VARIABLE_DOESNT_EXIST: \"ptr " << args[0] << ", " << args[1] << ";\"\n";
                     exit(1);
                 }
             }
@@ -87,7 +93,7 @@ public:
                 }
                 else
                 {
-                    std::cout << "VARIABLE_DOESNT_EXIST: LINE " << Runtime.LineNumber << ": PTR: \"ptr " << args[0] << ", " << args[1] << ";\"\n";
+                    std::cout << "ERROR: LINE " << Runtime.LineNumber << ": PTR: VARIABLE_DOESNT_EXIST: \"ptr " << args[0] << ", " << args[1] << ";\"\n";
                     exit(1);
                 }
             }

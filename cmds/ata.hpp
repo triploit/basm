@@ -8,7 +8,7 @@
 #include "../rte/variables.hpp"
 #include "../rte/lists.hpp"
 
-class Ata : public Command
+class Ata : public Command // Add element To Array; ata array, x; ata array, "Hello World!" -> ['H','e','l','l','o',' ','W','o','r','l','d','!']
 {
 private:
     std::regex name = std::regex("((A|a)(T|t)(A|a))");

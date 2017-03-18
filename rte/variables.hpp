@@ -33,6 +33,19 @@ public:
         return false;
     }
 
+    void clearAll()
+    {
+        for (int i = 0; i < b_variables.size(); i++)
+        {
+            if (b_variables[i].getName() != "var_ax" &&
+                b_variables[i].getName() != "var_bx" &&
+                b_variables[i].getName() != "var_cx")
+            {
+                b_variables.erase(b_variables.begin()+i);
+            }
+        }
+    }
+
     Variable getVariable(std::string name)
     {
         for (int i = 0; i < b_variables.size(); i++)

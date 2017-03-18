@@ -8,7 +8,7 @@
 #include "../rte/variables.hpp"
 #include "../rte/lists.hpp"
 
-class Aga : public Command
+class Aga : public Command // Array Get value At x -> y; aga array, index, o_variable;
 {
 private:
     std::regex name = std::regex("((A|a)(G|g)(A|a))");

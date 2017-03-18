@@ -7,7 +7,7 @@
 #include "../rte/compiler.hpp"
 #include "../rte/variables.hpp"
 
-class Gqi : public Command
+class Gqi : public Command // If var1 < var2 -> hx = 1 !-> hx = 0; eqi 1, 1
 {
 private:
     std::regex name = std::regex("^((G|g)(Q|q)(I|i))");

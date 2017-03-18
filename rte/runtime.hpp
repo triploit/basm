@@ -19,6 +19,7 @@ public:
     bool Compile = false;
     std::string CommandType = "";
 	bool Verbose = false;
+    std::string AktScope;
 
     std::string M_Code;
     std::string M__M;

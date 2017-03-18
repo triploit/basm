@@ -8,7 +8,7 @@
 #include "../rte/variables.hpp"
 #include "../rte/lists.hpp"
 
-class Asv : public Command
+class Asv : public Command // Array Set Value at; asv array, index, value
 {
 private:
     std::regex name = std::regex("((A|a)(S|s)(V|v))");

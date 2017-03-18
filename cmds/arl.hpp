@@ -8,7 +8,7 @@
 #include "../rte/variables.hpp"
 #include "../rte/lists.hpp"
 
-class Arl : public Command
+class Arl : public Command // remove x elements from array; arl var, val
 {
 private:
     std::regex name = std::regex("((A|a)(R|r)(L|l))");
@@ -26,7 +26,7 @@ public:
 
 		if (!Lists.existsList(var))
 		{
-			std::cout << "ERROR: LINE " << Runtime.LineNumber << ": AGA: ARRAY_NOT_FOUND: " << var << std::endl;
+			std::cout << "ERROR: LINE " << Runtime.LineNumber << ": ARL: ARRAY_NOT_FOUND: " << var << std::endl;
 			exit(1);
 		}
 

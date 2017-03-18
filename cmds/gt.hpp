@@ -7,7 +7,7 @@
 #include "../rte/compiler.hpp"
 #include "../rte/registers.hpp"
 
-class Gt : public Command
+class Gt : public Command // goto x
 {
 private:
     std::regex name = std::regex("((G|g)(T|t))");

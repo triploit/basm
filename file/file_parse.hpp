@@ -63,10 +63,16 @@ void file_parse(std::string __file)
                     Compiler.addLineT("}\n");
                 }
 
+                Variables.clearAll();
+                Lists.clearAll();
+
                 std::string mark = l.replace(":", "").cxs();
                 // Compiler.addLineT(l.cxs());
-                 Runtime.M__M = mark;
+                Runtime.M__M = mark;
+
                 Labels.setAktLabel( Runtime.M__M);
+                Runtime.AktScope = Runtime.M__M;
+
 				if (Runtime.Verbose)
 					std::cout << "[L]:[" << (i) << "] " << mark<< std::endl;
 
