@@ -3,6 +3,10 @@ func install
   g++ main.cpp -o basm -w -static
   chmod +x basm
   sudo mv basm /usr/bin/basm
+
+  echo -e "\e[1;32mInstall BASM Library...\e[00m"
+  sudo secpm install basm-lib
+  echo -e "\e[1;32mFinished.\e[00m"
 }
 
 func update
