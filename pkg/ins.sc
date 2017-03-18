@@ -15,10 +15,23 @@ func remove
   sudo rm /usr/bin/basm
 }
 
+func werror
+{
+  @echo There is no Windows-Support yet.
+  @echo Install this package manually.
+}
+
 func install_win
 {
-  echo Ich bin auf Windows!
-  [
-    echo Hallo!
-  ]
+  &werror
+}
+
+func remove_win
+{
+  &werror
+}
+
+func update_win
+{
+  &werror
 }
