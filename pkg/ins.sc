@@ -4,9 +4,9 @@ func install
   chmod +x basm
   sudo mv basm /usr/bin/basm
 
-  echo -e "\e[1;32mInstall BASM Library...\e[00m"
+  echo -e "\e[1;32m## Install BASM Library..."
   sudo secpm install basm-lib
-  echo -e "\e[1;32mFinished.\e[00m"
+  echo -e "\e[1;32m## Finished."
 }
 
 func update
