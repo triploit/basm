@@ -20,21 +20,20 @@ private:
 public:
     void runFunction(std::vector<std::string> args)
     {
-        // std::cout << "VAR!" << std::endl;
         std::string var = args[0];
 
         if (Variables.existsVariable(var) || Variables.existsRealVariable(var)
             || Registers.existsRegister(var) || Registers.existsRealRegister(var)
 			|| Lists.existsList(var))
         {
-            std::cout << "ERROR: LINE " << Runtime.LineNumber << ": INVALID_VARIABLE_NAME: \"" << var << "\": Variable/Register already exists!" << std::endl;
+            std::cout << "ERROR: LINE " << Runtime.LineNumber << ": INVALID_VARIABLE_NAME: \"" << var << "\" (" << Variables.getVariable(var).getScope() << "/" << Runtime.M__M << "): Variable/Register already exists!" << std::endl;
             exit(1);
         }
         else
         {
             Compiler.addLine("int __realINT_"+var+";");
             Compiler.addLine("int *"+var+" = &__realINT_"+var+";");
-            Variables.addVariable(Variable(var, std::string("__realINT_"+var)));
+            Variables.addVariable(Variable(var, std::string("__realINT_"+var), Runtime.M__M));
             // std::cout << "[V] New Variable: " << var << "::" << std::string("__realINT_"+var) << std::endl;
         }
     }

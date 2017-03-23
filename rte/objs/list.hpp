@@ -9,11 +9,18 @@ class List
 private:
 	std::vector<int> values;
 	std::string name;
+	std::string scope;
 
 public:
-	List(std::string _name)
+	List(std::string _name, std::string _scope)
 	{
 		name = _name;
+		scope = _scope;
+	}
+
+	std::string getScope()
+	{
+		return scope;
 	}
 
 	void addValue(int i)

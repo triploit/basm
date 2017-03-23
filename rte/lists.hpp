@@ -24,18 +24,33 @@ public:
 				b_lists[i].getName() != "list_bx" &&
 				b_lists[i].getName() != "list_cx")
 			{
+				if (Runtime.Verbose)
+					std::cout << "[RTE] Erase List: " << b_lists[i].getName() << std::endl;
 				b_lists.erase(b_lists.begin()+i);
 			}
 		}
+	}
+
+	std::vector<List> getLists()
+	{
+		return b_lists;
 	}
 
 	bool existsList(std::string _name)
 	{
 		for (int i = 0; i < b_lists.size(); i++)
 		{
-			if (b_lists[i].getName() == _name)
+			if ((b_lists[i].getScope() == Runtime.M__M ||
+				b_lists[i].getScope() == "_sys_public__SCOPE_") &&
+				b_lists[i].getName() == _name)
 			{
 				return true;
+			}
+			else
+			{
+				// std::cout << "[RTE] " << b_lists[i].getName() << " != " << _name << std::endl;
+				// std::cout << "[RTE] " << b_lists[i].getScope() << " != " << Runtime.M__M << std::endl;
+				// std::cout << "[RTE] " << b_lists[i].getScope() << " != " << "_sys_public__SCOPE_" << std::endl;
 			}
 		}
 
@@ -46,13 +61,15 @@ public:
 	{
 		for (int i = 0; i < b_lists.size(); i++)
 		{
-			if (b_lists[i].getName() == _name)
+			if ((b_lists[i].getScope() == Runtime.M__M ||
+				b_lists[i].getScope() == "_sys_public__SCOPE_") &&
+				b_lists[i].getName() == _name)
 			{
 				return b_lists[i];
 			}
 		}
 
-		return List("[NE:EN]");
+		return List("[NE:EN]", "[NE:EN]");
 
 	}
 

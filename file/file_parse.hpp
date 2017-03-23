@@ -63,8 +63,17 @@ void file_parse(std::string __file)
                     Compiler.addLineT("}\n");
                 }
 
+                if (Runtime.Verbose)
+                {
+                    std::cout << "[RTE] Clearing Variables... New Scope " << l.cxs() << std::endl;
+                    std::cout << "[RTE] " << Lists.getLists().size() << std::endl;
+                }
+
                 Variables.clearAll();
                 Lists.clearAll();
+
+                if (Runtime.Verbose)
+                    std::cout << "[RTE] " << Lists.getLists().size() << std::endl;
 
                 std::string mark = l.replace(":", "").cxs();
                 // Compiler.addLineT(l.cxs());
@@ -74,7 +83,7 @@ void file_parse(std::string __file)
                 Runtime.AktScope = Runtime.M__M;
 
 				if (Runtime.Verbose)
-					std::cout << "[L]:[" << (i) << "] " << mark<< std::endl;
+					std::cout << "[L]:[" << (i) << "/" << Runtime.LineNumber << "] " << mark << std::endl;
 
                 Compiler.addLineT("int " + mark + "()");
                 Compiler.addLineT("{");
@@ -83,7 +92,7 @@ void file_parse(std::string __file)
             else if (l.at(l.length() - 1) == ':' && l.at(0) == '.')
             {
 				if (Runtime.Verbose)
-					std::cout << "[LG]:[" << (i) << "] " << l.replace(":", "").replace(".", "").cxs() << std::endl;
+					std::cout << "[LG]:[" << (i) << "/" << Runtime.LineNumber << "] " << l.replace(":", "").replace(".", "").cxs() << std::endl;
 
                 Compiler.addLineT(l.replace(".", "").cxs());
                 // Labels.addGoto(Goto(l.replace(".", "").replace(":", "").cxs(), i, Labels.getAktLabel()));

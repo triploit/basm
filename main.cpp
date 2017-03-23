@@ -21,12 +21,12 @@ int main(int argc, char const *argv[])
     Tokenizer.clearAll();
     Parser.clearAll();
 
-    Variables.addVariable(Variable("var_ax", "_r_var_ax"));
-    Variables.addVariable(Variable("var_bx", "_r_var_bx"));
-    Variables.addVariable(Variable("var_cx", "_r_var_cx"));
-    Lists.addList(List("list_ax"));
-    Lists.addList(List("list_bx"));
-    Lists.addList(List("list_cx"));
+    Variables.addVariable(Variable("var_ax", "_r_var_ax", "_sys_public__SCOPE_"));
+    Variables.addVariable(Variable("var_bx", "_r_var_bx", "_sys_public__SCOPE_"));
+    Variables.addVariable(Variable("var_cx", "_r_var_cx", "_sys_public__SCOPE_"));
+    Lists.addList(List("list_ax", "_sys_public__SCOPE_"));
+    Lists.addList(List("list_bx", "_sys_public__SCOPE_"));
+    Lists.addList(List("list_cx", "_sys_public__SCOPE_"));
 
     Compiler.addLineT("#include <iostream>");
     Compiler.addLineT("#include <stack>");
@@ -171,7 +171,8 @@ int main(int argc, char const *argv[])
 
 void help()
 {
-    std::cout << "BASM 0.1.6 - Beta Release\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
+    std::cout << "BASM 0.1.6a - Beta Release\n\nUSAGE:\n\tbasm <file> ...\n" << 
+std::endl;
     std::cout << "\t-o <file> : set binary output file name" << std::endl;
     std::cout << "\t-s        : static linking" << std::endl;
     std::cout << "\t-v        : verbose compiling" << std::endl;

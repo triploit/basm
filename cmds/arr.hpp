@@ -32,7 +32,7 @@ public:
         }
         else
         {
-			List l(var);
+			List l(var, Runtime.M__M);
 			Lists.addList(l);
 
 			Compiler.addLine("std::vector<int> "+var+";");
