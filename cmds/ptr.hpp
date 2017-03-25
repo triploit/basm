@@ -36,13 +36,13 @@ public:
 
             if (std::regex_match(var_reg, match, r_registers))
             {
-                Compiler.addLine(var_reg + " = " + ptr + ";");
+                Compiler.addLine(var_reg + " = (int *)" + ptr + ";");
             }
             else
             {
                 if (Variables.existsVariable(var_reg))
                 {
-                    Compiler.addLine(var_reg + " = " + ptr + ";");
+                    Compiler.addLine(var_reg + " = (int *)" + ptr + ";");
                 }
                 else
                 {
