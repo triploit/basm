@@ -99,14 +99,14 @@ int main(int argc, char const *argv[])
                 _static = true;
                 continue;
             }
-		else if (arg[1] == 'v')
-			{
-				Runtime.Verbose = true;
-			}
-		else if (arg[1] == 'k')
-			{
-				Compiler.KEEP_CPP_SOURCE = true;
-			}
+    		else if (arg[1] == 'v')
+    		{
+    			Runtime.Verbose = true;
+    		}
+    		else if (arg[1] == 'k')
+    		{
+    			Compiler.KEEP_CPP_SOURCE = true;
+    		}
             else if (arg[1] == '-')
             {
                 if (arg == "--static")
@@ -179,11 +179,13 @@ int main(int argc, char const *argv[])
 
 void help()
 {
-    std::cout << "BASM 0.1.6a - Beta Release\n\nUSAGE:\n\tbasm <file> ...\n" << 
-std::endl;
+    std::cout << "BASM 0.1.6b - Beta Release\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
+
     std::cout << "\t-o <file> : set binary output file name" << std::endl;
     std::cout << "\t-s        : static linking" << std::endl;
     std::cout << "\t-v        : verbose compiling" << std::endl;
+    std::cout << "\t-k        : keep generated c++ file" << std::endl;
+
     std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<
     "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
     "is 30 KB large but with static linking it would be 2 MB.)" << std::endl;
