@@ -99,9 +99,13 @@ int main(int argc, char const *argv[])
                 _static = true;
                 continue;
             }
-			else if (arg[1] == 'v')
+		else if (arg[1] == 'v')
 			{
 				Runtime.Verbose = true;
+			}
+		else if (arg[1] == 'k')
+			{
+				Compiler.KEEP_CPP_SOURCE = true;
 			}
             else if (arg[1] == '-')
             {
@@ -130,6 +134,10 @@ int main(int argc, char const *argv[])
 				else if (arg == "--verbose")
 				{
 					Runtime.Verbose = true;
+				}
+				else if (arg == "--keep")
+				{
+					Compiler.KEEP_CPP_SOURCE = true;
 				}
             }
             else
