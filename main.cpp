@@ -174,7 +174,7 @@ int main(int argc, char const *argv[])
     Runtime.LineNumber = 1;
     file_parse(file);
 
-    if (!Labels.existsLabel("main"))
+    if (!Labels.existsLabel("main") && !Runtime.NO_MAIN)
     {
         std::cout << "ERROR: MAIN_NOT_FOUND: Main Function not declared!" << std::endl;
         exit(1);
