@@ -131,14 +131,21 @@ int main(int argc, char const *argv[])
                     i++;
                     continue;
                 }
-				else if (arg == "--verbose")
-				{
-					Runtime.Verbose = true;
-				}
-				else if (arg == "--keep")
-				{
-					Compiler.KEEP_CPP_SOURCE = true;
-				}
+                else if (arg == "--no-main")
+                {
+                    Runtime.NO_MAIN = true;
+                    continue;
+                }
+		else if (arg == "--verbose")
+		{
+			Runtime.Verbose = true;
+               		continue;
+		}
+		else if (arg == "--keep")
+		{
+			Compiler.KEEP_CPP_SOURCE = true;
+                    	continue;
+		}
             }
             else
             {
@@ -185,6 +192,7 @@ void help()
     std::cout << "\t-s        : static linking" << std::endl;
     std::cout << "\t-v        : verbose compiling" << std::endl;
     std::cout << "\t-k        : keep generated c++ file" << std::endl;
+    std::cout << "\t--no-main : no main function" << std::endl;
 
     std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<
     "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
