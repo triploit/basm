@@ -131,11 +131,6 @@ int main(int argc, char const *argv[])
                     i++;
                     continue;
                 }
-                else if (arg == "--no-main")
-                {
-                    Runtime.NO_MAIN = true;
-                    continue;
-                }
 		else if (arg == "--verbose")
 		{
 			Runtime.Verbose = true;
@@ -174,7 +169,7 @@ int main(int argc, char const *argv[])
     Runtime.LineNumber = 1;
     file_parse(file);
 
-    if (!Labels.existsLabel("main") && !Runtime.NO_MAIN)
+    if (!Labels.existsLabel("main"))
     {
         std::cout << "ERROR: MAIN_NOT_FOUND: Main Function not declared!" << std::endl;
         exit(1);
@@ -192,7 +187,6 @@ void help()
     std::cout << "\t-s        : static linking" << std::endl;
     std::cout << "\t-v        : verbose compiling" << std::endl;
     std::cout << "\t-k        : keep generated c++ file" << std::endl;
-    std::cout << "\t--no-main : no main function" << std::endl;
 
     std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<
     "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<

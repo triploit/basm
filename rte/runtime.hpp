@@ -19,7 +19,6 @@ public:
     bool Compile = false;
     std::string CommandType = "";
     bool Verbose = false;
-    bool NO_MAIN = false;
     std::string AktScope;
 
     std::string M_Code;
