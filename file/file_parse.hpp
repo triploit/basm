@@ -63,9 +63,6 @@ void file_parse(std::string __file)
             l = spl[0];
             int argc = 0;
 
-            if (spl.size() > 1)
-                argc = std::stoi(spl[1].replace("<", "").replace(">", "").cxs());
-
             if (l.at(l.length() - 1) == ':' && l.at(0) != '.')
             {
                 if ( Runtime.M__M != "[NOTH]")

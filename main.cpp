@@ -181,7 +181,7 @@ int main(int argc, char const *argv[])
 
 void help()
 {
-    std::cout << "BASM 0.1.6c - Beta Release\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
+    std::cout << "BASM 0.1.7\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
 
     std::cout << "\t-o <file> : set binary output file name" << std::endl;
     std::cout << "\t-s        : static linking" << std::endl;
