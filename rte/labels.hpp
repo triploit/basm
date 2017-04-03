@@ -75,10 +75,10 @@ public:
         return i;
     }
 
-    void addLabel(std::string name, int index)
+    void addLabel(std::string name, int index, int argc)
     {
         // std::cout << "ADD LABEL \"" << name << "\"" << std::endl;
-        b_labels.push_back(Label(name, index));
+        b_labels.push_back(Label(name, index, argc));
     }
 
     Label getLabel(std::string name)
@@ -91,7 +91,7 @@ public:
             }
         }
 
-        return Label("NL", 0);
+        return Label("NL", 0, 0);
     }
 
     int labelCount()

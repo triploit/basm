@@ -6,6 +6,8 @@
 #include <regex>
 
 #include "objs/command.hpp"
+#include "objs/label.hpp"
+#include "labels.hpp"
 #include "../cmds/push.hpp"
 #include "../cmds/pop.hpp"
 #include "../cmds/mov.hpp"
@@ -101,13 +103,60 @@ public:
 
     void runCommand(std::string command, std::vector<std::string> args)
     {
+        if (Labels.existsLabel(command))
+        {
+            // std::cout << "AHA1! " << command << std::endl;
+
+            if (Labels.getLabel(command).getArgCount() > 0)
+            {
+                // std::cout << "AHA2! " << command << std::endl;
+
+                if (Labels.getLabel(command).getArgCount() == (args.size()))
+                {
+                    // std::cout << "AHA3! " << command << std::endl;
+
+                    std::string lbl = command;
+                    std::string push = "push";
+                    int index = 0;
+
+                    // std::cout << "BEG: " << lbl << std::endl;
+
+                    for (int c = 0; c < (args.size()); c++)
+                    {
+                        // std::cout << "PUSH: " << args[0] << std::endl;
+                        (new Push)->runFunction(args);
+                        args.erase(args.begin()+1);
+                    }
+
+                    // std::cout << lbl << std::endl;
+                    Compiler.addLine(lbl+"();\n");
+
+                }
+                else
+                {
+                    std::cout << "Error: INVALID_FUNCTION_CALL: Cant call function \"" << command << "\": To less/many arguments! (" << args.size() << "/" << Labels.getLabel(command).getArgCount() << ")" << std::endl;
+                    exit(1);
+                }
+            }
+            else
+            {
+                std::cout << "Error: INVALID_FUNCTION_CALL: Cant call function \"" << command << "\": No argument count in function definition!" << std::endl;
+                exit(1);
+            }
+            return;
+        }
+
         for (int i = 0; i < bin_commands.size(); i++)
         {
             if (std::regex_match(command, s, bin_commands[i]->getName()))
             {
                 bin_commands[i]->runFunction(args);
+                return;
             }
         }
+
+        std::cout << "Error: COMMAND_NOT_FOUND: Command not found: " << command << std::endl;
+        exit(1);
     }
 } Commands;
 

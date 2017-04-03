@@ -1,6 +1,10 @@
 #ifndef FILE_LEX
 #define FILE_LEX
 
+#include <iostream>
+#include <string>
+#include <algorithm>
+
 #include "../rte/runtime.hpp"
 #include "../rte/compiler.hpp"
 #include "lexer.hpp"
@@ -54,6 +58,13 @@ void file_parse(std::string __file)
 
             l = tmp;
             l = l.trim();
+            tri::string l2 = l;
+            std::vector<tri::string> spl = l.split(' ');
+            l = spl[0];
+            int argc = 0;
+
+            if (spl.size() > 1)
+                argc = std::stoi(spl[1].replace("<", "").replace(">", "").cxs());
 
             if (l.at(l.length() - 1) == ':' && l.at(0) != '.')
             {
@@ -100,7 +111,8 @@ void file_parse(std::string __file)
             }
             else
             {
-                // std::cout << l.cxs() << "L? " <<  l.at(l.length()-1) << std::endl;
+                l = l2;
+                // std::cout << l.cxs() << "L? " <<  l.cxs() << std::endl;
                 Tokenizer.setCode(l.cxs());
                 Tokenizer.doTokenize();
                 Parser.setAll(Tokenizer.getCommand(), Tokenizer.getArgs());

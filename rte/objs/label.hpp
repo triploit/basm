@@ -8,6 +8,8 @@ class Label
 private:
     int index;
     std::string name;
+    int argc = 0;
+
 public:
     int getIndex()
     {
@@ -24,10 +26,16 @@ public:
         name = s;
     }
 
-    Label(std::string _name, int _index)
+    int getArgCount()
+    {
+        return argc;
+    }
+
+    Label(std::string _name, int _index, int _argc)
     {
         name = _name;
         index = _index;
+        argc = _argc;
     }
 };
 

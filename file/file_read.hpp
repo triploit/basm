@@ -138,14 +138,27 @@ void file_read(std::string __file)
 
             l = tmp;
             l = l.trim();
+            std::vector<tri::string> spl = l.split();
 
-            if (l.at(l.length() - 1) == ':' && l.at(0) != '.')
+            if (l.cxs() == "" || l.length() == 0)
+                continue;
+
+            // std::cout << "AHA: " << spl[0].cxs() << "/" << spl[0].at(spl[0].length() - 1) << std::endl;
+
+            if (spl[0].at(spl[0].length() - 1) == ':' && l.at(0) != '.')
             {
-                Labels.addLabel(l.replace(":", "").cxs(), i);
+                l = spl[0];
+                int argc = 0;
+
+                if (spl.size() > 1)
+                    argc = std::stoi(spl[1].replace("<", "").replace(">", "").cxs());
+
+                // std::cout << "ADD LABEL: " << l.replace(":", "").cxs() << std::endl;
+                Labels.addLabel(l.replace(":", "").cxs(), i, argc);
+
                 Compiler.addLineT("int " + l.replace(":", "").cxs() + "();");
                 Runtime.M__M = l.replace(":", "").cxs();
                 Labels.setAktLabel(l.replace(":", "").cxs());
-                // std::cout << "[L]:[" << (i) << "] " << l.replace(":", "").cxs() << std::endl;
             }
             else if (l.at(l.length() - 1) == ':' && l.at(0) == '.')
             {
