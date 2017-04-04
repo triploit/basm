@@ -114,18 +114,15 @@ public:
                 if (Labels.getLabel(command).getArgCount() == (args.size()))
                 {
                     // std::cout << "AHA3! " << command << std::endl;
-
                     std::string lbl = command;
-                    std::string push = "push";
-                    int index = 0;
-
                     // std::cout << "BEG: " << lbl << std::endl;
 
-                    for (int c = 0; c < (args.size()); c++)
+                    for (int c = 0; c <= args.size(); c++)
                     {
-                        // std::cout << "PUSH: " << args[0] << std::endl;
-                        (new Push)->runFunction(args);
-                        args.erase(args.begin()+1);
+                        if (Runtime.Verbose)
+                            std::cout << "[RTE] PUSH-COMMAND: " << args[args.size()-1] << std::endl;
+                        (new Push)->runFunction({args[args.size()-1]});
+                        args.erase(args.end());
                     }
 
                     // std::cout << lbl << std::endl;

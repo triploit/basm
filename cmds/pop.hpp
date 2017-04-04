@@ -20,7 +20,7 @@ public:
         if (!Runtime.Compile)
             Runtime.popStack();
 
-        Compiler.addLine("\n\tif (stack.size() > 0)\n\t\tstack.pop();\n");
+        Compiler.addLine("stack.pop();");
     }
 
     std::regex getName()

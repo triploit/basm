@@ -51,7 +51,7 @@ public:
         {
             nice++;
         }
-        else if (std::regex_match(var1, match, r_int))
+        else if (std::regex_match(var2, match, r_int))
         {
             nice++;
         }
