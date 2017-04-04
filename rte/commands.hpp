@@ -49,6 +49,7 @@
 #include "../cmds/asv.hpp"
 #include "../cmds/arl.hpp"
 #include "../cmds/asa.hpp"
+#include "../cmds/rnd.hpp"
 
 class Commands
 {
@@ -99,6 +100,7 @@ public:
         bin_commands.push_back(new Asv());
         bin_commands.push_back(new Arl());
         bin_commands.push_back(new Asa());
+        bin_commands.push_back(new Rnd());
     }
 
     void runCommand(std::string command, std::vector<std::string> args)
