@@ -21,11 +21,11 @@ public:
     {
 
         if ((Variables.existsVariable(args[0]) || Registers.existsRegister(args[0])) && (Variables.existsVariable(args[1]) || Registers.existsRegister(args[1])))
-            Compiler.addLine("srand(time(NULL)); stack.push(rand() % ("+args[1]+" + 1 - "+args[0]+") + "+args[0]+");");
+            Compiler.addLine("srand(time(NULL)); stack.push(rand() % (*"+args[1]+" + 1 - *"+args[0]+") + *"+args[0]+");");
         else if (Variables.existsVariable(args[0]) || Registers.existsRegister(args[0]))
-            Compiler.addLine("srand(time(NULL)); stack.push(rand() % ("+args[1]+" + 1 - "+args[0]+") + "+args[0]+");");
+            Compiler.addLine("srand(time(NULL)); stack.push(rand() % ("+args[1]+" + 1 - *"+args[0]+") + *"+args[0]+");");
         else if (Variables.existsVariable(args[1]) || Registers.existsRegister(args[1]))
-            Compiler.addLine("srand(time(NULL)); stack.push(rand() % ("+args[1]+" + 1 - "+args[0]+") + "+args[0]+");");
+            Compiler.addLine("srand(time(NULL)); stack.push(rand() % (*"+args[1]+" + 1 - "+args[0]+") + "+args[0]+");");
         else
             Compiler.addLine("srand(time(NULL)); stack.push(rand() % ("+args[1]+" + 1 - "+args[0]+") + "+args[0]+");");
     }
