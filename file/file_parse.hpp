@@ -14,12 +14,15 @@
 void file_parse(std::string __file)
 {
     Runtime.M_Line = "";
+    Runtime.LineNumber = 0;
     Runtime.M__M = "[NOTH]";
 
     for (int i = 0; i < Runtime.M_Code.size(); i++)
     {
         if (Runtime.M_Code[i] == ((char) 236))
         {
+            Runtime.LineNumber++;
+
             // std::cout << Compiler.getCode();
             Tokenizer.clearAll();
             Parser.clearAll();
@@ -47,7 +50,6 @@ void file_parse(std::string __file)
             {
                 if (Runtime.M_Line[i] == '#')
                 {
-                    // std::cout << "COMMAND: " << tmp << std::endl;
                     break;
                 }
                 else
@@ -116,7 +118,6 @@ void file_parse(std::string __file)
                 Parser.doParse();
             }
 
-            Runtime.LineNumber++;
             Runtime.M_Line = "";
         }
         else

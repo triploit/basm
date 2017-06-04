@@ -22,9 +22,12 @@ void file_read(std::string __file)
 
     if (_file.is_open())
     {
+        Runtime.LineNumber = 0;
         int i = 0;
+
         while (std::getline(_file, Runtime.M_Line))
         {
+            Runtime.LineNumber++;
             tri::string s = Runtime.M_Line;
             s = s.trim();
             if (s.at(0) == '%')
@@ -79,6 +82,12 @@ void file_read(std::string __file)
 						}
 					}
                 }
+                continue;
+            }
+            else if (s.at(0) == '#')
+            {
+    			if (Runtime.Verbose)
+    				std::cout << "[LEX] ignore line: " << Runtime.LineNumber << ": is a comment" << std::endl;
                 continue;
             }
 
@@ -164,8 +173,6 @@ void file_read(std::string __file)
             {
                 Labels.addGoto(Goto(l.replace(".", "").replace(":", "").cxs(), i, Labels.getAktLabel()));
             }
-
-            Runtime.LineNumber++;
         }
 
         // Runtime.LineNumber = 1;
