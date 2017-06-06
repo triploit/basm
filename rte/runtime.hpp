@@ -1,4 +1,3 @@
-// Runtime Variablen, wie Zeilennumer der Datei oder der Stack oder anderes
 #ifndef RUNTIME_HPP
 #define RUNTIME_HPP
 
@@ -6,16 +5,18 @@
 #include <stack>
 #include <vector>
 #include <fstream>
+#include "../tstring.hpp"
 
 class Runtime
 {
 private:
     std::stack<int> b_stack;
+	std::vector<std::string> names;
     std::vector<std::string> included_files;
     bool jump;
 
 public:
-    int LineNumber = 1;
+    int LineNumber = 0;
     bool Compile = false;
     std::string CommandType = "";
     bool Verbose = false;
@@ -27,6 +28,23 @@ public:
     std::string M_Binary;
     std::ifstream M_File;
 
+	bool nameDefined(std::string name)
+	{
+		for (std::string n : names)
+		{
+			if (n == name)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	void defineName(std::string n)
+	{
+		names.push_back(n);
+	}
 
     void addFile(std::string name)
     {

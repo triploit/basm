@@ -86,9 +86,15 @@ void file_parse(std::string __file)
                     std::cout << "[RTE] " << Lists.getLists().size() << std::endl;
 
                 std::string mark = l.replace(":", "").cxs();
-                // Compiler.addLineT(l.cxs());
                 Runtime.M__M = mark;
 
+				if (Runtime.nameDefined(mark))
+				{
+					std::cout << "ERROR: LINE " << Runtime.LineNumber << ": LABEL_CREATED: NAME_ALREADY_DEFINED: Name is already defined: " << mark << std::endl;
+					exit(1);
+				}
+
+				Runtime.defineName(mark);
                 Labels.setAktLabel( Runtime.M__M);
                 Runtime.AktScope = Runtime.M__M;
 

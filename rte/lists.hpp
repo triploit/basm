@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 #include "objs/list.hpp"
+#include "variables.hpp"
+#include "registers.hpp"
 
 class Lists
 {
@@ -13,7 +15,14 @@ private:
 public:
 	void addList(List l)
 	{
+		if (Runtime.nameDefined(l.getName()))
+		{
+			std::cout << "ERROR: LINE " << Runtime.LineNumber << ": LIST_CREATE: NAME_ALREADY_DEFINED: Name is already defined: " << l.getName() << std::endl;
+			exit(1);
+		}
+
 		b_lists.push_back(l);
+		Runtime.defineName(l.getName());
 	}
 
 	void clearAll()

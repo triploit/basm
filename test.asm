@@ -4,6 +4,7 @@ stack_to_array:         # needs length of input in hx, output in list_ax; if you
     .ar:
         ata list_ax, 0
         sub 1, hx
+
     ggn ar
     pushv len
     str hx

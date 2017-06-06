@@ -5,6 +5,7 @@
 #include <vector>
 #include "objs/variable.hpp"
 #include "runtime.hpp"
+#include "registers.hpp"
 
 class Variables
 {
@@ -74,9 +75,17 @@ public:
 
     void addVariable(Variable v)
     {
-        if (Runtime.Verbose)
-            std::cout << "[RTE] Add Variable (" << v.getScope() << "): " << v.getName() << std::endl;
-        b_variables.push_back(v);
+		if (Runtime.Verbose)
+			std::cout << "[RTE] Add Variable (" << v.getScope() << "): " << v.getName() << std::endl;
+
+		if (Runtime.nameDefined(v.getName()))
+		{
+			std::cout << "ERROR: LINE " << Runtime.LineNumber << ": VARIABLE_CREATE: NAME_ALREADY_DEFINED: Name is already defined: " << v.getName() << std::endl;
+			exit(1);
+		}
+
+	    b_variables.push_back(v);
+		Runtime.defineName(v.getName());
     }
 
 } Variables;
