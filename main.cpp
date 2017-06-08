@@ -181,14 +181,26 @@ int main(int argc, char const *argv[])
 
 void help()
 {
-    std::cout << "BASM 0.1.7\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
+    std::cout << "BASM 0.1.7a\n\nUSAGE:\n\tbasm <file> ...\n" << std::endl;
 
     std::cout << "\t-o <file> : set binary output file name" << std::endl;
     std::cout << "\t-s        : static linking" << std::endl;
     std::cout << "\t-v        : verbose compiling" << std::endl;
     std::cout << "\t-k        : keep generated c++ file" << std::endl;
 
-    std::cout << "\nStatic Linking makes a standalone executable and does not need\n" <<
+    std::cout << "\nVerbose Compiling: If you compile with verbose mode on, the compiler will\n" <<
+	"put out everything what id does (e.g. generating code, deleting variables, show special infos).\n"<< std::endl;
+
+    std::cout << "\nStatic Linking: Static Linking makes a standalone executable and does not need\n" <<
     "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
     "is 30 KB large but with static linking it would be 2 MB.)" << std::endl;
+
+    std::cout << "\n Examples:\n" <<
+	"\tWindows    1: basm example.asm -o example.exe\n" <<
+	"\tWindows    2: basm -o example.exe example.asm\n" <<
+	"\tWindows    3: basm -o example.exe example.asm -v -s\n\n" <<
+	"\tLin & Mac  1: basm example.asm -o example\n" <<
+	"\tLin & Mac  2: basm -o example example.asm\n" <<
+	"\tLin & Mac  3: basm -o example example.asm -v -s\n\n"
+	 << std::endl;
 }

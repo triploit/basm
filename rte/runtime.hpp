@@ -6,6 +6,7 @@
 #include <vector>
 #include <fstream>
 #include "../tstring.hpp"
+#include "objs/variable.hpp"
 
 class Runtime
 {
@@ -122,6 +123,31 @@ public:
 
         b_stack = s;
     }
+
+	void clearDefinedVariableNames(std::vector<Variable> vars)
+	{
+		int i = 0;
+		std::string s;
+
+		for (Variable v : vars)
+		{
+			for (i = 0; i < names.size(); i++)
+			{
+				s = names[i];
+
+				if (s == "var_ax" || s == "var_bx" || s == "var_cx")
+					continue;
+
+				if (v.getName() == s)
+				{
+					names.erase(names.begin()+i);
+
+					if (Verbose)
+						std::cout << "[RTE] Remove defined Variable-Word: " << s << std::endl;
+				}
+			}
+		}
+	}
 } Runtime;
 
 #endif

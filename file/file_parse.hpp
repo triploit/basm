@@ -21,6 +21,11 @@ void file_parse(std::string __file)
     {
         if (Runtime.M_Code[i] == ((char) 236))
         {
+			while (Runtime.M_Code[i+1] == ((char) 236))
+			{
+				i++;
+			}
+
             Runtime.LineNumber++;
 
             // std::cout << Compiler.getCode();
@@ -44,6 +49,26 @@ void file_parse(std::string __file)
                 Runtime.M_Line = "";
                 continue;
             }
+			else if (l.startsWith("#!beginFile.Name! "))
+			{
+				std::string name = l.split()[1].cxs();
+				std::cout << "[ COMPILE INFO ] Strarting compiling with file " << name << "..." << std::endl;
+				Runtime.LineNumber = 1;
+                Runtime.M_Line = "";
+                continue;
+			}
+			else if (l.startsWith("#!endFile.ResetLineNumber! "))
+			{
+				std::string name = l.split()[1].cxs();
+				std::cout << "[ COMPILE INFO ] Ended compiling with file " << name << "..." << std::endl;
+                Runtime.M_Line = "";
+
+				Runtime.clearDefinedVariableNames(Variables.getVariables());
+                Variables.clearAll();
+                Lists.clearAll();
+				Runtime.LineNumber = 1;
+                continue;
+			}
 
             std::string tmp = "";
             for (int i = 0; i < Runtime.M_Line.size(); i++)
@@ -79,6 +104,7 @@ void file_parse(std::string __file)
                     std::cout << "[RTE] " << Lists.getLists().size() << std::endl;
                 }
 
+				Runtime.clearDefinedVariableNames(Variables.getVariables());
                 Variables.clearAll();
                 Lists.clearAll();
 

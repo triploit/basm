@@ -24,6 +24,7 @@ void file_read(std::string __file)
     {
         Runtime.LineNumber = 0;
         int i = 0;
+		Runtime.M_Code += ((char) 236) + std::string("#!beginFile.Name! "+__file)+((char) 236);
 
         while (std::getline(_file, Runtime.M_Line))
         {
@@ -178,6 +179,8 @@ void file_read(std::string __file)
         // Runtime.LineNumber = 1;
         Labels.setAktLabel("");
         _file.close();
+
+		Runtime.M_Code += ((char) 236) + std::string("#!endFile.ResetLineNumber! "+__file)+((char) 236);
     }
     else
     {
