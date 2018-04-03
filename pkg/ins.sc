@@ -9,7 +9,7 @@ func install {
 }
 
 func update {
-  g++ main.cpp -o basm -w static -std=c++11
+  g++ main.cpp -o basm -w -static -std=c++11
   chmod +x basm
   sudo mv basm /usr/bin/basm
 }
