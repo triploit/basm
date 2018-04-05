@@ -1,30 +1,43 @@
 main:
+	push "> "
+	write_string 2
 	inp
-	gln number
+	gen number
 	ggn str
-	gen str
-	var x
 
 	.number:
 		push "Thats a number!"
-		mov 15, hx
-		jmp write_string
+		write_string 15
+		jmp pnl
+		push gx
+		outl
 		hlt
 
 	.str:
 		push "Thats a string!"
-		mov 15, hx
-		jmp write_string
+		write_string 15
+		jmp pnl
+		add 1, hx
+		write_string hx
 		hlt
 
-write_string: # String value on Stack, Length on String in HX
+	return
+
+pnl:
+	push 10
+	ptc
+	pop
+	return
+
+write_string: <1> # String value on Stack, String length as argument
 	var x
-	mov hx, x
 	ptr hx, x
+	str hx
+	pop
 	.beg:
 		sub 1, hx
 		ptc
 		pop
-	ggn beg
+	gnn beg
 	ptr hx, hx
 	return
