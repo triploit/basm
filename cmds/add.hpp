@@ -26,19 +26,19 @@ public:
             Lists.existsList(args[1]) ||
             std::regex_match(args[1], match, r_int))
         {
-            std::cout << "ERROR: LINE " << Runtime.LineNumber << ": MOV: WRONG_TYPE: Field \"" << args[0] << "\" has the wrong type!" << std::endl;
+            std::cout << "ERROR: LINE " << Runtime.LineNumber << ": ADD: WRONG_TYPE: Field \"" << args[0] << "\" has the wrong type!" << std::endl;
         }
 
         if ((!Registers.existsRegister(args[0]) && !Variables.existsVariable(args[0])) &&
             !std::regex_match(args[0], match, r_int))
         {
-            std::cout << "ERROR: LINE " << Runtime.LineNumber << ": MOV: XYZ_NOT_FOUND: Variable/Register \"" << args[0] << "\" doesn't exist!" << std::endl;
+            std::cout << "ERROR: LINE " << Runtime.LineNumber << ": ADD: XYZ_NOT_FOUND: Variable/Register \"" << args[0] << "\" doesn't exist!" << std::endl;
             exit(1);
         }
 
         if (!Registers.existsRegister(args[1]) && !Variables.existsVariable(args[1]))
         {
-            std::cout << "ERROR: LINE " << Runtime.LineNumber << ": MOV: XYZ_NOT_FOUND: Variable/Register \"" << args[1] << "\" doesn't exist!" << std::endl;
+            std::cout << "ERROR: LINE " << Runtime.LineNumber << ": ADD: XYZ_NOT_FOUND: Variable/Register \"" << args[1] << "\" doesn't exist!" << std::endl;
             exit(1);
         }
 
