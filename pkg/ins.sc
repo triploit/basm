@@ -1,3 +1,7 @@
+name basm
+user triploit
+ver 0.1.7.0
+
 func install {
   g++ main.cpp -o basm -w -static -std=c++11
   chmod +x basm
