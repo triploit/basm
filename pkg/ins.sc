@@ -1,6 +1,7 @@
 name basm
 user triploit
 ver 0.1.7.0
+dep triploit basm-lib 0.0.0.1
 
 func install {
   g++ main.cpp -o basm -w -static -std=c++11
