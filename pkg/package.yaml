@@ -1,0 +1,7 @@
+name: "BASM"
+version: "0.1.7a"
+description: "A transpiled assembly language."
+information: "No information provided yet."
+
+products:
+    - basm: /usr/bin/basm
