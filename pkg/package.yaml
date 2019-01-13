@@ -5,3 +5,6 @@ information: "No information provided yet."
 
 products:
     - basm: /usr/bin/basm
+ 
+dependencies:
+    - triploit:aml@github.com
