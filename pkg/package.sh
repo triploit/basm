@@ -1,4 +1,4 @@
 function build {
-    g++ main.cpp -o basm -w -static -std=c++11
+    g++ main.cpp -o basm -w -std=c++11
     chmod +x basm
 }
