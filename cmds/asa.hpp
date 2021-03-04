@@ -35,7 +35,12 @@ public:
 		}
 		else
 		{
-			std::cout << "ERROR: LINE " << Runtime.LineNumber << ": ASV: ARRAY_NOT_FOUND: " << var << std::endl;
+            if(!Lists.existsList(o_var))
+            {
+                std::cout << "ERROR: LINE " << Runtime.LineNumber << ": ASA: ARRAY_NOT_FOUND: " << o_var << std::endl;
+                exit(1);
+            }
+			std::cout << "ERROR: LINE " << Runtime.LineNumber << ": ASA: ARRAY_NOT_FOUND: " << var << std::endl;
 			exit(1);
 		}
     }

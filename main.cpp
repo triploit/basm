@@ -192,7 +192,7 @@ void help()
 	"put out everything what id does (e.g. generating code, deleting variables, show special infos).\n"<< std::endl;
 
     std::cout << "\nStatic Linking: Static Linking makes a standalone executable and does not need\n" <<
-    "the GCC librarys. But it makes the executable bigger (for example: a non-static executable\n" <<
+    "the GCC libraries. But it makes the executable bigger (for example: a non-static executable\n" <<
     "is 30 KB large but with static linking it would be 2 MB.)" << std::endl;
 
     std::cout << "\n Examples:\n" <<
