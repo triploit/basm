@@ -1,13 +1,13 @@
 # BASM - Binary Assembly
 
-When other Assemblies are assembled directly to machine code or compiled to architecure-specific Assembliest, BASM is translated to higher-order language -- C++.
+When other Assemblies are assembled directly to machine code or compiled to architecure-specific Assemblies, BASM is translated to higher-order language -- C++.
 This is why BASM is an uncustomary language. You do not very often see language which translation process looks like BASM's one.
 
 # Basics
 
 In BASM you have access to 8 32-bit registers: AX, BX, CX, DX, EX, FX, GX, HX. In other Assemblies you have 8 8-bit registers, 4 16-bit, 4 32-bit and 4 64-bit registers. And Instruction Pointers, Stack Pointers, Base Pointers and Segment registers, of course.
 
-> *__IMPORTANT:__ Wen other Assemblies have following syntax:
+> *__IMPORTANT:__ When other Assemblies have following syntax:
 > `command destination, source`, in BASM positions of destination and 
 > source are swapped.*
 ## Registers in detail
