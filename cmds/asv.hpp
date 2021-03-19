@@ -67,13 +67,13 @@ public:
 				}
 				else
 				{
-					std::cout << "ERROR: LINE " << Runtime.LineNumber << ": ASV: VARIABLE(2)_NOT_FOUND: " << val << std::endl;
+					std::cout << "ERROR: LINE " << Runtime.LineNumber << ": ASV: VARIABLE(2)_NOT_FOUND: " << o_var << std::endl;
 					exit(1);
 				}
 			}
 			else
 			{
-				std::cout << "ERROR: LINE " << Runtime.LineNumber << ": ASV: INVALID_VALUE(2): " << val << std::endl;
+				std::cout << "ERROR: LINE " << Runtime.LineNumber << ": ASV: INVALID_VALUE(2): " << o_var << std::endl;
 				exit(1);
 			}
 		}
