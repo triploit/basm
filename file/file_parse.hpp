@@ -52,7 +52,7 @@ void file_parse(std::string __file)
 			else if (l.startsWith("#!beginFile.Name! "))
 			{
 				std::string name = l.split()[1].cxs();
-				std::cout << "[ COMPILE INFO ] Strarting compiling with file " << name << "..." << std::endl;
+				std::cout << "[ COMPILE INFO ] Starting compiling with file " << name << "..." << std::endl;
 				Runtime.LineNumber = 1;
                 Runtime.M_Line = "";
                 continue;

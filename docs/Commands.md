@@ -24,7 +24,7 @@ Syntax:
 ```asm
 aga array, idx, variable
 ```
-`array` is array, `idx` index and `variable` is variable or register in which will be value of expression `array[idx]`.
+`array` is array, `idx` index and `variable` is either variable or register in which will be value of expression `array[idx]`.
 Examples:
 ```asm
 aga array, 0, myvar
@@ -38,7 +38,7 @@ Syntax:
 ```asm
 ags array, variable
 ```
-`array` is array and `variable` is variable or register in which will be stored size of array `array`.
+`array` is array and `variable` is either variable or register in which will be stored size of array `array`.
 Examples:
 ```asm
 ags list, list_size
@@ -61,7 +61,7 @@ arl list, cx # Removes all of elements from array list
 arl 10, 3 # ERROR: LINE 5: ARL: ARRAY_NOT_FOUND: 10
 ```
 ### arr
-Arr command creates array with given name.
+Arr command creates array with a given name.
 Syntax:
 ```asm
 arr array
@@ -75,7 +75,7 @@ arr ax # ERROR: LINE 3: INVALID_VARIABLE_NAME: "ax": Variable/Register
 ```
 Be careful with creating array with name which is a number! It is __UB__!
 ### asa
-Asa is abbreviation from Set Array to Array. However, this is heavily stretched.
+Asa is abbreviation from Set Array to Array.
 Syntax:
 ```asm
 asa array1, array2
@@ -89,7 +89,7 @@ asa ax, 1 # ERROR: LINE 3: ASA: ARRAY_NOT_FOUND: ax
 asa 1, array # ERROR: LINE 5: ASA: ARRAY_NOT_FOUND: 1
 ```
 ### asv
-Abbreviation from Array Set Value at. This is something like C++ array\[idx\]  = value;
+Abbreviation from Array Set Value at. This is something like array\[idx\]  = value;
 Syntax:
 ```asm
 asv array, idx, val
@@ -101,5 +101,18 @@ arr defined_before
 arr list
 asa list, defined_before # defined_before have 4 elements
 asv list, 0, 14 # list[0] = 14;
+asv list, 4, 10 # There isn't any error, because arrays are dynamic arrays.
 ```
+### ata
+Stands for Add element To Array
+Something like:
+```asm
+arr list
+# ...
+mov x, eax ; dsdsds
+ags list, eax # can be another register
+sub 1, eax
+asv list, eax
+```
+To learn more about `sub` command, click [here](#sub).
 ### 

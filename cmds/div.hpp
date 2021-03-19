@@ -41,7 +41,11 @@ public:
             std::cout << "ERROR: LINE " << Runtime.LineNumber << ": MOV: XYZ_NOT_FOUND: Variable/Register \"" << args[1] << "\" doesn't exist!" << std::endl;
             exit(1);
         }
-
+        if (Registers.getRegister(args[1]).getValue() == 0)
+        {
+            std::cout << "ERROR: LINE " << Runtime.LineNumber << ": MOV: DIVISION_BY_0: Second argument of div x, y, namely " << args[1] << " has value of 0."
+            << std::endl;
+        }
         if (std::regex_match(args[0], match, r_int))
             Compiler.addLine("*"+args[1]+" = *"+args[1]+" / "+args[0]+";");
         else
