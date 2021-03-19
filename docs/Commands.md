@@ -46,7 +46,7 @@ ags list, list_size
 ags array, 10 # ERROR: LINE: 3: AGS: INVALID_VALUE: 10
 ```
 ### arl
-Arl possibly is abbreviation from "Array Remove eLements".
+Arl is abbreviation from "Array Remove eLements".
 Syntax:
 ```asm
 arl array, val
@@ -87,3 +87,19 @@ asa array, list
 asa ax, 1 # ERROR: LINE 3: ASA: ARRAY_NOT_FOUND: ax
           # ERROR: LINE 3: ASA: ARRAY_NOT_FOUND: 1
 asa 1, array # ERROR: LINE 5: ASA: ARRAY_NOT_FOUND: 1
+```
+### asv
+Abbreviation from Array Set Value at. This is something like C++ array\[idx\]  = value;
+Syntax:
+```asm
+asv array, idx, val
+```
+Examples:
+```asm
+arr defined_before
+# ...
+arr list
+asa list, defined_before # defined_before have 4 elements
+asv list, 0, 14 # list[0] = 14;
+```
+### 
